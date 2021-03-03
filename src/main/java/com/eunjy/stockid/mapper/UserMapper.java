@@ -4,11 +4,11 @@ import java.util.List;
 
 import org.apache.ibatis.annotations.Mapper;
 
-import com.eunjy.stockid.domain.UserVO;
+import com.eunjy.stockid.domain.UsrGrpVO;
 
 @Mapper
 public interface UserMapper {
 	
-	public List<UserVO> getUserList();
+	public List<UsrGrpVO> getUserList();
 
 }

@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.eunjy.stockid.domain.UserVO;
+import com.eunjy.stockid.domain.UsrGrpVO;
 import com.eunjy.stockid.service.UserService;
 
 @Controller
@@ -25,9 +25,9 @@ public class UserController {
 	}
 	
 	@RequestMapping(value = "/mgnt/getUserList", method = RequestMethod.GET) 
-	public @ResponseBody List<UserVO> getUserList(Model model) { 
+	public @ResponseBody List<UsrGrpVO> getUserList(Model model) { 
 		System.out.println("mgnt/getUserList (수정 0304)"); 
-		List<UserVO> userList = userService.getUserList();
+		List<UsrGrpVO> userList = userService.getUserList();
 		System.out.println("userList size >>> " + userList.size()); 
 		
 		if (userList.size() > 0) {

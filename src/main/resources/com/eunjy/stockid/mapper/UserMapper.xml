@@ -2,14 +2,14 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd"> 
 <mapper namespace="com.eunjy.stockid.mapper.UserMapper"> 
 
-	<select id="getUserList" resultType="com.eunjy.stockid.domain.UserVO"> 
+	<select id="getUserList" resultType="com.eunjy.stockid.domain.UsrGrpVO"> 
 		SELECT
-			USER_NUM
-			, USER_ID
-			, USER_PW
+			USR_NUM
+			, USR_ID
+			, USR_PW
 			, REG_ID
 			, REG_DT
-		FROM USER_INFO
+		FROM USR_INFO
 	</select>
 
 </mapper>
