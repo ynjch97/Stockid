@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- 60초마다 설정 파일의 변경을 확인 하여 변경시 갱신 -->
+<configuration scan="true" scanPeriod="60 seconds">
+
+    <!-- pattern -->
+    <property name="LOG_PATTERN" value="[%-5level] %d{yy-MM-dd HH:mm:ss} [%logger{0}:%line] - %msg%n"/>
+
+    <!-- Console Appender -->
+    <appender name="CONSOLE" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
+            <pattern>${LOG_PATTERN}</pattern>
+        </encoder>
+    </appender>
+
+	<logger name="jdbc.sqlonly" level="debug" />
+	<logger name="jdbc.resultsettable" level="debug" />
+	<logger name="com.eunjy" level="debug"/>
+
+    <!-- root 레벨 설정 -->
+    <root level="DEBUG">
+		<level value="debug" />
+        <appender-ref ref="CONSOLE"/>
+    </root>
+
+    <!-- 특정패키지 로깅레벨 설정 -->
+   	<logger name="org.mybatis" level="DEBUG" additivity="false">
+        <appender-ref ref="CONSOLE"/>
+    </logger>
+    
+</configuration>
