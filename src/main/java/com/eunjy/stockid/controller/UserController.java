@@ -26,7 +26,7 @@ public class UserController {
 	
 	@RequestMapping(value = "/mgnt/getUserList", method = RequestMethod.GET) 
 	public @ResponseBody List<UserVO> getUserList(Model model) { 
-		System.out.println("mgnt/getUserList"); 
+		System.out.println("mgnt/getUserList (수정 0304)"); 
 		List<UserVO> userList = userService.getUserList();
 		System.out.println("userList size >>> " + userList.size()); 
 		
