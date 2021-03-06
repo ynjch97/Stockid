@@ -24,6 +24,7 @@ public class UsrGrpVO {
 	private String grpPtcpCd;
 	private String grpExpln;
 	private String headUsrNum;
+	private String headUsrYn;
 
 	// 여부 확인
 	private String useYn;

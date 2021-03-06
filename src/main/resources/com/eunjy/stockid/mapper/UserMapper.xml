@@ -12,4 +12,26 @@
 		FROM USR_INFO
 	</select>
 
+	<select id="getMyGrpList" resultType="com.eunjy.stockid.domain.UsrGrpVO"> 
+		SELECT
+			U.USR_NUM
+			, U.USR_ID
+		    , U.USR_NM
+		    , U.DFLT_GRP_NUM
+		    , G.GRP_NUM
+		    , G.GRP_NM
+		    , G.HEAD_USR_NUM
+		    , CASE WHEN (G.HEAD_USR_NUM = U.USR_NUM) THEN 'Y' ELSE 'N' END AS HEAD_USR_YN
+		FROM USR_INFO U
+		LEFT OUTER JOIN USR_GRP_RLTN R
+			ON U.USR_NUM = R.USR_NUM
+		INNER JOIN GRP_INFO G
+			ON G.GRP_NUM = R.GRP_NUM
+		WHERE G.USE_YN = 'Y'
+			AND R.MBR_APRV_YN = 'Y'
+			AND R.HEAD_APRV_YN = 'Y'
+			AND U.USR_NUM = #{usrNum}
+		ORDER BY G.REG_DT
+	</select>
+
 </mapper>
