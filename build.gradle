@@ -20,8 +20,10 @@ repositories {
 }
 
 dependencies {
-	// 무료 부트스트랩 테마 SiteMesh
+	// 무료 부트스트랩 테마 SiteMesh (레이아웃 템플릿 엔진)
 	compile group: 'org.sitemesh', name: 'sitemesh', version: '3.0.1'
+	// Thymeleaf(텍스트 템플릿 엔진) : templates 폴더 내에 html 파일을 만들어 사용하게 됨
+	implementation('nz.net.ultraq.thymeleaf:thymeleaf-layout-dialect')
 	
 	// MySQL DB 연동
 	// implementation 'org.springframework.boot:spring-boot-starter-data-jdbc'
@@ -34,6 +36,9 @@ dependencies {
 	// Log4jdbc 
 	// compile group: 'org.bgee.log4jdbc-log4j2', name: 'log4jdbc-log4j2-jdbc3', version: '1.16'
 	implementation 'org.bgee.log4jdbc-log4j2:log4jdbc-log4j2-jdbc4.1:1.16'
+
+	// 개발 시 자동으로 서버를 restart
+	developmentOnly("org.springframework.boot:spring-boot-devtools")
 
 	implementation 'org.apache.tomcat.embed:tomcat-embed-jasper'
 	implementation 'javax.servlet:jstl'
