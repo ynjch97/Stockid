@@ -20,7 +20,7 @@ public class UserController {
 
 	@RequestMapping(value = "/mgnt/userList", method = RequestMethod.GET) 
 	public String userList(Model model) { 
-		System.out.println("mgnt/userList"); 
+		System.out.println("mgnt/userList !"); 
 		return "mgnt/userList"; 
 	}
 	
