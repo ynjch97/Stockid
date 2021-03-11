@@ -18,10 +18,29 @@ public class UserController {
 	@Autowired
 	UserService userService; 
 
+	@RequestMapping(value = "/login.do", method = RequestMethod.GET) 
+	public String login(Model model) { 
+		System.out.println("login/login"); 
+		return "login/login"; 
+	}
+	
+	@RequestMapping(value = "/grpList.do", method = RequestMethod.GET) 
+	public String grpList(Model model) { 
+		System.out.println("login/grpList"); 
+		return "login/grpList"; 
+	}
+
 	@RequestMapping(value = "/mgnt/userList", method = RequestMethod.GET) 
 	public String userList(Model model) { 
-		System.out.println("mgnt/userList !"); 
+		System.out.println("mgnt/userList"); 
 		return "mgnt/userList"; 
+	}
+
+	@RequestMapping(value = "/welcome.do", method = RequestMethod.GET) 
+	public String thymeLeafTest(Model model) { 
+		System.out.println("thymeleaf!!"); 
+		model.addAttribute("name", "hi");
+		return "thymeleaf/welcome"; 
 	}
 	
 	@RequestMapping(value = "/mgnt/getUserList", method = RequestMethod.GET) 
