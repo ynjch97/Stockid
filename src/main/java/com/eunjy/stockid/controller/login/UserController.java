@@ -1,4 +1,4 @@
-package com.eunjy.stockid.controller;
+package com.eunjy.stockid.controller.login;
 
 import java.util.List;
 
@@ -18,19 +18,19 @@ public class UserController {
 	@Autowired
 	UserService userService; 
 
-	@RequestMapping(value = "/login.do", method = RequestMethod.GET) 
-	public String login(Model model) { 
-		System.out.println("login/login"); 
+	@RequestMapping(value = "/", method = RequestMethod.GET) 
+	public String home(Model model) { 
+		System.out.println("home controller start"); 
 		return "login/login"; 
 	}
 	
-	@RequestMapping(value = "/grpList.do", method = RequestMethod.GET) 
+	@RequestMapping(value = "/login/grpList.do", method = RequestMethod.GET) 
 	public String grpList(Model model) { 
 		System.out.println("login/grpList"); 
 		return "login/grpList"; 
 	}
 
-	@RequestMapping(value = "/mgnt/userList", method = RequestMethod.GET) 
+	@RequestMapping(value = "/mgnt/userList.do", method = RequestMethod.GET) 
 	public String userList(Model model) { 
 		System.out.println("mgnt/userList"); 
 		return "mgnt/userList"; 
@@ -43,7 +43,7 @@ public class UserController {
 		return "thymeleaf/welcome"; 
 	}
 	
-	@RequestMapping(value = "/mgnt/getUserList", method = RequestMethod.GET) 
+	@RequestMapping(value = "/mgnt/getUserList.do", method = RequestMethod.GET) 
 	public @ResponseBody List<UsrGrpVO> getUserList(Model model) { 
 		System.out.println("mgnt/getUserList (수정 0304)"); 
 		List<UsrGrpVO> userList = userService.getUserList();
