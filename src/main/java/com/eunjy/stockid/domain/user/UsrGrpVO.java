@@ -1,4 +1,4 @@
-package com.eunjy.stockid.domain;
+package com.eunjy.stockid.domain.user;
 
 import lombok.Data;
 import lombok.NoArgsConstructor;

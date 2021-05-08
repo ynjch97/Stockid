@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.eunjy.stockid.domain.UsrGrpVO;
+import com.eunjy.stockid.domain.user.UsrGrpVO;
 import com.eunjy.stockid.service.user.UserService;
 
 @Controller

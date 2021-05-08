@@ -9,7 +9,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.eunjy.stockid.domain.UsrGrpVO;
+import com.eunjy.stockid.domain.common.CommonResultVo;
+import com.eunjy.stockid.domain.common.CommonResultVo.ResultStatus;
+import com.eunjy.stockid.domain.user.UsrGrpVO;
 import com.eunjy.stockid.service.login.LoginService;
 
 @Controller
@@ -37,17 +39,11 @@ public class LoginController {
 	}
 	
 	@RequestMapping(value = "/login/joinUsr.do", method = RequestMethod.POST) 
-	public @ResponseBody List<UsrGrpVO> getUserList(Model model) { 
-		System.out.println("mgnt/getUserList (수정 0304)"); 
-		List<UsrGrpVO> userList = userService.getUserList();
-		System.out.println("userList size >>> " + userList.size()); 
+	public @ResponseBody CommonResultVo getUserList(Model model) { 
 		
-		if (userList.size() > 0) {
-			for (int i=0; i<userList.size(); i++) {
-				System.out.println(userList.get(i).toString());
-			}
-		}
-		return userList;
+		
+		CommonResultVo rsltVo = new CommonResultVo(ResultStatus.FAIL);
+		return rsltVo;
 	}
 	
 }
