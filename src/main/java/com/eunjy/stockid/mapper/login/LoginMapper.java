@@ -10,5 +10,7 @@ import com.eunjy.stockid.domain.user.UsrGrpVO;
 public interface LoginMapper {
 	
 	public List<UsrGrpVO> getUserList();
+	
+	public int insertUsr(UsrGrpVO usrGrpVO);
 
 }

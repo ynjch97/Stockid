@@ -2,7 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd"> 
 <mapper namespace="com.eunjy.stockid.mapper.user.UserMapper"> 
 
-	<select id="getUserList" resultType="com.eunjy.stockid.domain.UsrGrpVO"> 
+	<select id="getUserList" resultType="com.eunjy.stockid.domain.user.UsrGrpVO"> 
 		SELECT
 			USR_NUM
 			, USR_ID
@@ -12,7 +12,7 @@
 		FROM USR_INFO
 	</select>
 
-	<select id="getMyGrpList" resultType="com.eunjy.stockid.domain.UsrGrpVO"> 
+	<select id="getMyGrpList" resultType="com.eunjy.stockid.domain.user.UsrGrpVO"> 
 		SELECT
 			U.USR_NUM
 			, U.USR_ID

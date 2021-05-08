@@ -30,26 +30,61 @@
 		}
 	}).on("click","#joinBtn",function(){ // 회원 가입
 		if ( joinChk() ) {
-			alert("가입");
+			joinUsr();
 		}
 	})
 	;
 	
 	// 1. 유효성 체크
 	function joinChk() {
+		var result = true;
 		var $chkTarget = $("#frm input");
+		
 		$.each($chkTarget, function(idx, elem) {
 		    if ( isTrimEmpty($(elem).val()) ) {
 				alert($(elem).attr("placeholder") + " 란을 입력하세요");
 				$(elem).focus();
+				result = false;
 				return false;
 			}
 	    });
-		
-		return true;
+	    
+    	return result;
 	}
 	
 	// 2. 회원 가입
-	function joinUser() {
+	function joinUsr() {
+		var formData = new FormData($('#frm')[0]);
+		
+		$.ajax({
+			type: "POST",
+			enctype: 'multipart/form-data',
+			url: '/login/joinUsr.do',
+			data: formData,
+			processData: false,
+			contentType: false,
+			cache: false,
+			timeout: 600000,
+			success: function (data) {
+				if (data.isSuccess) {
+					alert(data.resultMsg);
+					window.location = "/login/login.do";
+				} else {
+					alert(data.resultMsg);
+				}
+			},
+			error: function (e) {
+				console.log("ERROR : ", e);
+			}
+		});
+	}
+	
+	// 테스트용 데이터 삽입
+	function test() {
+		$("#usrId").val("testID");
+		$("#usrNm").val("테스트이름");
+		$("#usrNick").val("테스트닉네임");
+		$("#usrMobile").val("01023452345");
+		$("#usrEmail").val("test@naver.com");
 	}
 </script>

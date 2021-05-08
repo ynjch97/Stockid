@@ -5,6 +5,11 @@ import lombok.NoArgsConstructor;
 
 @Data
 public class CommonResultVo {
+
+	protected ResultStatus result;
+	protected String resultMsg;
+	protected boolean isSuccess;
+	
 	public CommonResultVo() {
 	}
 	
@@ -12,9 +17,10 @@ public class CommonResultVo {
 		setResult(result);
 	}
 	
-	protected ResultStatus result;
-	protected String resultMsg;
-	protected boolean isSuccess;
+	public CommonResultVo(ResultStatus result, String resultMsg) {
+		setResult(result);
+		setResultMsg(resultMsg);
+	}
 	
 	public ResultStatus getResult() {
 		return result;
@@ -23,10 +29,10 @@ public class CommonResultVo {
 		this.result = result;
 		isSuccess = (ResultStatus.SUCCESS == this.result);
 	}
-	public String getresultMsg() {
+	public String getResultMsg() {
 		return resultMsg;
 	}
-	public void setresultMsg(String resultMsg) {
+	public void setResultMsg(String resultMsg) {
 		this.resultMsg = resultMsg;
 	}
 	public boolean getIsSuccess() {

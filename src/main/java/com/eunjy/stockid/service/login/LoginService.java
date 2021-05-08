@@ -14,8 +14,8 @@ public class LoginService {
 	@Autowired
 	private LoginMapper loginMapper;
 	
-	public List<UsrGrpVO> getUserList() { 
-		return loginMapper.getUserList(); 
+	public int insertUsr(UsrGrpVO usrGrpVO) { 
+		return loginMapper.insertUsr(usrGrpVO); 
 	}
 	
 }

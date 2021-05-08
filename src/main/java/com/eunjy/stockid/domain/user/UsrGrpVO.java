@@ -16,8 +16,11 @@ public class UsrGrpVO {
 	private String usrId;
 	private String usrPw;
 	private String usrNm;
+	private String usrNick;
 	private String usrMobile;
+	private String usrEmail;
 	private String dfltGrpNum;
+	private String usrType;
 
 	// 그룹
 	private String grpNm;
@@ -30,7 +33,8 @@ public class UsrGrpVO {
 	private String useYn;
 	private String openYn;
 	private String headAprvYn;
-	private String mbrAprvYn;
+	private String mbrDelYn;
+	private String mbrDelDt;
 	
 	// 등록, 수정
 	private String regId;
