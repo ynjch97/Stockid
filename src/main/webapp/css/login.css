@@ -47,12 +47,14 @@ div.login {
 */
 .login .tit-wrap { vertical-align:center; min-height:50px; } 
 .login .tit-wrap span:first-child { float:left; font-size:14px; font-weight:500; }
-.login .tit-wrap span:last-child { float:right; display:inline-block; text-align:right; margin-right:7px; background:url(https://www.seekpng.com/png/small/77-777412_this-icon-represents-settings-setting-icon-in-android.png) no-repeat 0 0; }
+.login .tit-wrap span:last-child { float:right; display:inline-block; text-align:right; margin-right:7px; font-size:12px; }
+.login .no-grp-wrap { padding-bottom:20px; }
+.login .no-grp-wrap p { font-size:18px; font-weight:500; width:100%; text-align:center; }
 .login .grp-wrap { border-bottom:1px solid #DFDFDF; padding-bottom:20px; }
 .login .grp-wrap > ul > li { font-size:18px; font-weight:500; line-height:40px; }
-.login .grp-wrap > ul > li:hover, .login .grp-wrap > ul > li:focus { color:#E00; }
-.login .grp-wrap > ul > li > span:first-child { display: inline-block; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; width: 360px; }
-.login .grp-wrap > ul > li > span:last-child { float:right; display:inline-block; text-align:right; width:40px; }
+.login .grp-wrap > ul > li > .grpMain { display: inline-block; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; width: 360px; }
+.login .grp-wrap > ul > li > .grpMain:hover, .login .grp-wrap > ul > li > .grpMain:focus { color:#E00; }
+.login .grp-wrap > ul > li > .grpSetting { float:right; display:inline-block; text-align:right; width:40px; background:center/10% no-repeat url(./image/common/setting.png); }
 .login .btn-wrap { margin:20px 0 0 0; }
 .login .btn-crt-grp { display:block; width:100%; font-size:16px; font-weight:500; line-height:49px; border-radius:3px; background:#FFBB00; color:#333333; margin-bottom:10px; }
 .login .btn-crt-grp:hover, .btn-crt-grp:focus { background:#EDA900; }

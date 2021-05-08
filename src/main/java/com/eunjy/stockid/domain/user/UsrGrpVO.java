@@ -8,9 +8,9 @@ import lombok.NoArgsConstructor;
 public class UsrGrpVO {
 
 	// 공통
-	private int usrNum;
-	private int grpNum;
-	private int rltnNum;
+	private String usrNum;
+	private String grpNum;
+	private String rltnNum;
 	
 	// 사용자
 	private String usrId;

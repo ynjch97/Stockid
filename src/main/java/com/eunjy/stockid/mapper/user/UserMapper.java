@@ -9,6 +9,6 @@ import com.eunjy.stockid.domain.user.UsrGrpVO;
 @Mapper
 public interface UserMapper {
 	
-	public List<UsrGrpVO> getUserList();
+	public List<UsrGrpVO> getMyGrpList(UsrGrpVO usrGrpVO);
 
 }

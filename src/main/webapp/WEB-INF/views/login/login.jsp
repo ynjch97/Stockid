@@ -18,7 +18,7 @@
 	$(document).ready(function () {
 	}).on("click","#loginBtn",function(){ // 로그인
 		if ( loginChk() ) {
-			alert("로그인");
+			window.location = "/user/grpList.do";
 		}
 	}).on("click","#joinBtn",function(){ // 회원가입
 		window.location = "/login/join.do";

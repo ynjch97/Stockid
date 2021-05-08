@@ -1,27 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?> 
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd"> 
 <mapper namespace="com.eunjy.stockid.mapper.user.UserMapper"> 
-
-	<select id="getUserList" resultType="com.eunjy.stockid.domain.user.UsrGrpVO"> 
+	
+	<select id="getMyGrpList" parameterType="com.eunjy.stockid.domain.user.UsrGrpVO" resultType="com.eunjy.stockid.domain.user.UsrGrpVO"> 
 		SELECT
-			USR_NUM
-			, USR_ID
-			, USR_PW
-			, REG_ID
-			, REG_DT
-		FROM USR_INFO
-	</select>
-
-	<select id="getMyGrpList" resultType="com.eunjy.stockid.domain.user.UsrGrpVO"> 
-		SELECT
-			U.USR_NUM
+			COUNT(1) OVER() AS TOTAL_CNT
+			, G.GRP_NUM
+		    , G.GRP_NM
+			, R.USR_TYPE
+		    , GET_CODE_NAME('USR_TYPE', R.USR_TYPE) AS USR_TYPE_NM /*나의 회원 유형*/
+		    , G.OPEN_YN
+			, U.USR_NUM
 			, U.USR_ID
 		    , U.USR_NM
+		    , CASE WHEN R.USR_NICK IS NOT NULL THEN R.USR_NICK ELSE U.USR_NICK END AS USR_NICK
 		    , U.DFLT_GRP_NUM
-		    , G.GRP_NUM
-		    , G.GRP_NM
-		    , G.HEAD_USR_NUM
-		    , CASE WHEN (G.HEAD_USR_NUM = U.USR_NUM) THEN 'Y' ELSE 'N' END AS HEAD_USR_YN
 		FROM USR_INFO U
 		LEFT OUTER JOIN USR_GRP_RLTN R
 			ON U.USR_NUM = R.USR_NUM
@@ -30,8 +23,9 @@
 		WHERE G.USE_YN = 'Y'
 			AND R.MBR_APRV_YN = 'Y'
 			AND R.HEAD_APRV_YN = 'Y'
-			AND U.USR_NUM = #{usrNum}
-		ORDER BY G.REG_DT
+			AND R.MBR_DEL_YN = 'N'
+		    AND U.USR_NUM = #{usrNum}
+		ORDER BY R.REG_DT
 	</select>
 
 </mapper>
