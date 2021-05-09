@@ -5,7 +5,7 @@
 	<div>
 		<div class="tit-wrap">
 			<span style="display: none;">그룹 목록</span>
-			<span>개인정보 수정</span>
+			<span id="userInfoBtn">개인정보 수정</span>
 		</div>
 		<div class="no-grp-wrap" style="display: none;">
 			<p>가입된 그룹이 없습니다.</p>
@@ -30,6 +30,8 @@
 
 	$(document).ready(function(){
 		init();
+	}).on("click","#userInfoBtn",function(){ // 개인정보 수정으로 이동
+		goUserInfo();
 	}).on("click",".grpMain",function(){ // 그룹 메인으로 이동
 		var grpNum = $(this).parent("li").data("grpNum");
 		goMain(grpNum);
@@ -65,12 +67,17 @@
 		}
 	}
 	
-	// 2. 해당 그룹 메인으로 이동
+	// 2. 개인정보 수정으로 이동
+	function goUserInfo() {
+		window.location = "/user/userInfo.do";
+	}
+	
+	// 3. 해당 그룹 메인으로 이동
 	function goMain(grpNum) {
 		alert("메인 : " + grpNum);
 	}
 	
-	// 3. 해당 그룹 설정으로 이동
+	// 4. 해당 그룹 설정으로 이동
 	function goSetting(grpNum) {
 		alert("설정 : " + grpNum);
 	}

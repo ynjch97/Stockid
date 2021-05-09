@@ -13,7 +13,7 @@
 			<p><input type="text" id="usrNick" name="usrNick" placeholder="닉네임" maxlength="10" /></p>
 			<p><input type="text" id="usrMobile" name="usrMobile" placeholder="전화번호" maxlength="20" /></p>
 			<p><input type="text" id="usrEmail" name="usrEmail" placeholder="이메일" maxlength="50" /></p>
-			<button type="button" id="joinBtn" class="btn-login">회원가입</button>
+			<button type="button" id="joinBtn" class="btn-join">회원가입</button>
 		</form>
 	</div>
 </div>

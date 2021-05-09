@@ -33,4 +33,9 @@ public class UserController {
 		return "user/grpList"; 
 	}
 
+	@RequestMapping(value = "/user/userInfo.do", method = {RequestMethod.POST, RequestMethod.GET}) 
+	public String userInfo(Model model) { 
+		return "user/userInfo"; 
+	}
+
 }
