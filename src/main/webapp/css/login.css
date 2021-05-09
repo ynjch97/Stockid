@@ -54,7 +54,8 @@ div.login {
 .login .grp-wrap > ul > li { font-size:18px; font-weight:500; line-height:40px; }
 .login .grp-wrap > ul > li > .grpMain { display: inline-block; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; width: 360px; }
 .login .grp-wrap > ul > li > .grpMain:hover, .login .grp-wrap > ul > li > .grpMain:focus { color:#E00; }
-.login .grp-wrap > ul > li > .grpSetting { float:right; display:inline-block; text-align:right; width:40px; background:center/10% no-repeat url(./image/common/setting.png); }
+/*background-position:center; background-repeat:no-repeat ; background-image:url(../image/common/setting.png); background-size:50%;*/
+.login .grp-wrap > ul > li > .grpSetting { float:right; display:inline-block; text-align:right; width:40px; color:#00000000; background:center/15px no-repeat url(../image/common/setting.png); }
 .login .btn-wrap { margin:20px 0 0 0; }
 .login .btn-crt-grp { display:block; width:100%; font-size:16px; font-weight:500; line-height:49px; border-radius:3px; background:#FFBB00; color:#333333; margin-bottom:10px; }
 .login .btn-crt-grp:hover, .btn-crt-grp:focus { background:#EDA900; }
