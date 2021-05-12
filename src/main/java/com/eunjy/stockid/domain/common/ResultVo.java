@@ -4,20 +4,20 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Data
-public class CommonResultVo {
+public class ResultVo {
 
 	protected ResultStatus result;
 	protected String resultMsg;
 	protected boolean isSuccess;
 	
-	public CommonResultVo() {
+	public ResultVo() {
 	}
 	
-	public CommonResultVo(ResultStatus result) {
+	public ResultVo(ResultStatus result) {
 		setResult(result);
 	}
 	
-	public CommonResultVo(ResultStatus result, String resultMsg) {
+	public ResultVo(ResultStatus result, String resultMsg) {
 		setResult(result);
 		setResultMsg(resultMsg);
 	}
