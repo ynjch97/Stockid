@@ -2,7 +2,40 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd"> 
 <mapper namespace="com.eunjy.stockid.mapper.login.LoginMapper"> 
 
+	<!-- 회원 존재 유무 확인 조회 -->
+	<select id="countLoginId" parameterType="com.eunjy.stockid.domain.user.UsrGrpVO" resultType="Integer">
+ 		/* LoginMapper.xml.countLoginId */
+ 		SELECT
+ 			COUNT(1)
+		FROM USR_INFO
+		WHERE USE_YN = 'Y'
+			AND USR_ID = #{usrId, jdbcType=VARCHAR}
+ 	</select>
+ 	
+ 	<!-- 로그인용 회원 조회 -->
+ 	<select id="login" parameterType="com.eunjy.stockid.domain.user.UsrGrpVO" resultType="com.eunjy.stockid.domain.common.SessionUser">
+		/* LoginMapper.xml.login */
+		SELECT
+			USR_NUM 
+			, USR_ID
+			, USR_NM
+			, USR_NICK
+			, USR_MOBILE
+			, USR_EMAIL
+			, USE_YN
+			, REG_ID
+			, REG_DT
+			, MDFY_ID
+			, MDFY_DT
+		FROM USR_INFO 
+		WHERE USE_YN = 'Y'
+			AND USR_ID = #{usrId, jdbcType=VARCHAR}
+		    AND USR_PW = #{usrPw, jdbcType=VARCHAR}
+     </select>
+ 	
+	<!-- 회원가입 -->
 	<insert id="insertUsr" parameterType="com.eunjy.stockid.domain.user.UsrGrpVO"> 
+		/* LoginMapper.xml.insertUsr */
 		INSERT INTO USR_INFO (
 			USR_NUM
 			, USR_ID
