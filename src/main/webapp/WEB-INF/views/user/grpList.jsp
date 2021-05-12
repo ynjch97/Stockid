@@ -21,7 +21,7 @@
 			<button class="btn-join-grp disabled">그룹 참여하기</button>
 			<button class="btn-crt-grp disabled">그룹 생성하기</button>
 		</div>
-		<span class="grp-noti red">* 그룹은 총 5개까지만 참여 가능합니다.</span>
+		<span class="grp-noti red">* 그룹은 총 5개까지만 참여 가능합니다. ${sessionTest}</span>
 	</div>
 </div>
 			
