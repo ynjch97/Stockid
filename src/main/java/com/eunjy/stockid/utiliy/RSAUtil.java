@@ -1,4 +1,4 @@
-package com.eunjy.stockid.domain.common;
+package com.eunjy.stockid.utiliy;
 
 import java.io.UnsupportedEncodingException;
 import java.security.InvalidKeyException;
