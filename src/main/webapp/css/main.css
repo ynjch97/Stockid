@@ -234,6 +234,16 @@ div.container {
     height: 90%;
     padding: 5%;
 }
+div.sub-container {
+    position: absolute;
+    display:inline-block;
+    height: 500px;
+	width: 500px;
+	top: 50%;
+	left: 50%;
+	margin:0 0 0 -250px;
+	border:1px solid #dcdcdc;
+}
 
 /*
 * area (mobile)
