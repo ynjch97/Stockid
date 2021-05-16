@@ -1,4 +1,4 @@
-package com.eunjy.stockid.controller.main;
+package com.eunjy.stockid.controller.mgnt;
 
 import java.util.List;
 
