@@ -14,6 +14,7 @@ response.setHeader("Cache-Control", "no-cache");
 		<link rel="shortcut icon" href="../image/common/favicon.ico" type="image/x-icon" />
 		
 		<link rel="stylesheet" href="/css/main.css" />
+		<link rel="stylesheet" href="/css/mobile.css" />
 		<link rel="stylesheet" href="/css/login.css" />
 		<script type="text/javascript" src="/js/jquery-3.6.0.min.js" ></script>
 		<script type="text/javascript" src="/js/vue.js" ></script>

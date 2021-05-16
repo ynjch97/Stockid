@@ -6,6 +6,8 @@
 		<meta charset="utf-8" />
 		<title>Welcome to STOCKID</title>
 		<link rel="stylesheet" href="/css/main.css" />
+		<link rel="stylesheet" href="/css/header.css" />
+		<link rel="stylesheet" href="/css/mobile.css" />
 		<script type="text/javascript" src="/js/jquery-3.6.0.min.js" ></script>
 		<script type="text/javascript" src="/js/vue.js" ></script>
 		

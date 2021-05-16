@@ -223,14 +223,9 @@ select::-ms-expand { /* for IE 11 */
 /*
 * area 
 */
-div.header {
-    position: relative;
-	height: 10%;
-    background-color: #444;
-    z-index: 1000;
-}
 div.container {
     position: relative;
+	width: 100%;
     height: 90%;
     padding: 5%;
 }
@@ -243,16 +238,6 @@ div.sub-container {
 	left: 50%;
 	margin:0 0 0 -250px;
 	border:1px solid #dcdcdc;
-}
-
-/*
-* area (mobile)
-*/
-@media (max-width:600px) { 
-	div.header {
-	}
-	div.container {
-	}
 }
 
 

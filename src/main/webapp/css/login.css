@@ -14,16 +14,6 @@ div.login {
 }
 
 /*
-* area (mobile)
-*/
-@media (max-width:600px) { 
-	div.login {
-		width: 70%;
-	}
-}
-
-
-/*
 * login
 */
 .login img.logo { width:90%; margin: 0 5% 5% 15px; }
@@ -71,11 +61,3 @@ div.login {
 .login .btn-join-grp:hover, .btn-join-grp:focus { background:#EDA900; }
 .login span.grp-noti { width:100%; display: inline-block; text-align:center;}
 .login span.grp-noti.red { color:#E00; margin-top:5px; }
-
-/*
-* login & group select (mobile)
-*/
-@media (max-width:600px) { 
-	.login .grp-wrap > ul > li > span:first-child { max-width:90%;  }
-	.login .grp-wrap > ul > li > span:last-child { width:10%; }
-}

@@ -1,0 +1,26 @@
+@charset "utf-8";
+
+@import url(https://fonts.googleapis.com/earlyaccess/notosanskr.css);
+
+
+/*
+* area (mobile)
+*/
+@media (max-width:600px) { 
+	div.header {
+	}
+	div.container {
+	}
+	div.login {
+		width: 70%;
+	}
+}
+
+
+/*
+* login & group select (mobile)
+*/
+@media (max-width:600px) { 
+	.login .grp-wrap > ul > li > span:first-child { max-width:90%;  }
+	.login .grp-wrap > ul > li > span:last-child { width:10%; }
+}
