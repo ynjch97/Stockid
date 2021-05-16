@@ -60,6 +60,6 @@
 	
 	// 숫자 형식 체크
 	function isValidNumber(str) {
-		return /^[0-9]+$/.test(str);
+		return /^[0-9,0-9]+$/.test(str);
 	}
 </script>
