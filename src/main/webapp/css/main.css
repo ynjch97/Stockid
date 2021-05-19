@@ -248,6 +248,7 @@ div.sub-container {
 .btn-big { display:inline-block; padding:0 65px; font-size:18px; font-weight:500; line-height:49px; border-radius:3px; }
 .btn-mid { display:inline-block; padding:0 36px; font-size:16px; font-weight:500; line-height:39px; border-radius:3px; }
 .btn-small { display:inline-block; padding:0 15px; font-size:14px; font-weight:500; line-height:35px; border-radius:3px; }
+.btn-tiny { display:inline-block; padding:0 5px; font-size:14px; font-weight:500; line-height:30px; border-radius:2px; }
 .btn-yellow { background:#FFBB00; color:#333333; }
 .btn-yellow:hover, .btn-yellow:focus { color:#333333; }
 .btn-dark-gray { background:#5E6D82; color:#FFFFFF; }
@@ -315,7 +316,7 @@ button.disabled:hover, button.disabled:focus { background:rgba(0,0,0,0.2) !impor
 .form-board td.input-td .cmt:before {content: '\203B';margin-right: 2px;font-size: 12px;font-weight: 500;line-height: 21px;color: #f17f21;}
 .form-board td.input-td .cmt.break {display:block;margin-left:0;}
 .form-board td.td-center{text-align:center;}
-.form-board td span.item-txt {line-height:35px;}
-.form-board td button.btn-small {line-height:35px; margin-left:10px;}
+.form-board td span.item-txt {line-height:30px;}
+.form-board td button.btn-tiny {line-height:30px; margin-left:10px;}
 .form-board .td-memeber {padding-bottom:5px;}
 .form-board .td-memeber span {display:inline-block;margin-right:25px;margin-bottom:15px;}
