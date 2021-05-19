@@ -7,12 +7,29 @@
 * area (mobile)
 */
 @media (max-width:600px) { 
+	div.top-header {
+		display:none;
+	}
 	div.header {
+		height: 7%;
+		padding: 0 5%;
 	}
 	div.container {
+		height: 93%;
 	}
 	div.login {
 		width: 70%;
+	}
+}
+
+
+/*
+* header
+*/
+@media (max-width:600px) { 
+	div.header ul li {
+		line-height:60px;
+		font-size:16px; 
 	}
 }
 

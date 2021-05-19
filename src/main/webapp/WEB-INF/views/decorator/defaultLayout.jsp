@@ -7,6 +7,7 @@
 		<title>Welcome to STOCKID</title>
 		<link rel="stylesheet" href="/css/main.css" />
 		<link rel="stylesheet" href="/css/header.css" />
+		<link rel="stylesheet" href="/css/footer.css" />
 		<link rel="stylesheet" href="/css/mobile.css" />
 		<script type="text/javascript" src="/js/jquery-3.6.0.min.js" ></script>
 		<script type="text/javascript" src="/js/vue.js" ></script>
@@ -17,6 +18,10 @@
 	<body> 
 		<div> 
 			<sitemesh:write property='body'/> 
+		</div> 
+		<div> 
+			<sitemesh:write property='div.footer'/> 
+			<jsp:include page="footer.jsp"></jsp:include>
 		</div> 
 	</body> 
 </html>
