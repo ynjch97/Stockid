@@ -19,6 +19,7 @@ response.setHeader("Cache-Control", "no-cache");
 		<script type="text/javascript" src="/js/jquery-3.6.0.min.js" ></script>
 		<script type="text/javascript" src="/js/vue.js" ></script>
 		<script type="text/javascript" src="/js/common.js" ></script>
+		<script type="text/javascript" src="/js/login.js" ></script>
 		
 		<!-- [뒤로가기]버튼으로 보지 못하도록, no-cache로 설정 -->
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">

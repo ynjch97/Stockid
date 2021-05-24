@@ -18,10 +18,16 @@
 
 <script type="text/javascript">
 	$(document).ready(function () {
+		
+		// 비밀번호 입력창에서 엔터 누를 시에도 로그인 실행
+		$("#loginPw").keypress(function( event ) {
+			if ( event.which == 13 ) {
+				login();				
+			}
+		});
+	
 	}).on("click","#loginBtn",function(){ // 로그인
-		if ( loginChk() ) {
-			login();
-		}
+		login();
 	}).on("click","#joinBtn",function(){ // 회원가입
 		window.location = "/login/join.do";
 	}).on("click","#findIdPw",function(){ // ID, PW 찾기
@@ -45,12 +51,18 @@
 	
 	// 2. 로그인
 	function login(isForce) {
+		if ( !loginChk() ) { // 로그인 유효성 체크
+			return;
+		}
+	
 		if (isForce == null) {
 			isForce = false;
 		}
 		
 		var formData = new FormData($('#frm')[0]);
-		formData.set("isForce", isForce);
+		formData.set( "isForce", isForce );
+		formData.set( "loginId", encodingBase64(formData.get("loginId")) );
+		formData.set( "loginPw", encodingBase64(formData.get("loginPw")) );
 		
 		$.ajax({
 			type: "POST",
