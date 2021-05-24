@@ -1,6 +1,6 @@
 package com.eunjy.stockid.service.login;
 
-import java.util.List;
+import java.security.NoSuchAlgorithmException;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -14,6 +14,8 @@ import com.eunjy.stockid.domain.user.UsrGrpVO;
 import com.eunjy.stockid.mapper.login.LoginMapper;
 import com.eunjy.stockid.utiliy.Consts;
 import com.eunjy.stockid.utiliy.LoginManager;
+import com.eunjy.stockid.utiliy.SHA256Util;
+import com.eunjy.stockid.utiliy.StringUtil;
 
 @Service
 public class LoginService {
@@ -84,10 +86,34 @@ public class LoginService {
 		SessionUser sessionUser = loginMapper.login(usrGrpVO);
 		return sessionUser;
 	}
-	
-	// 회원가입
+
+
+	/**
+	 * 회원가입
+	 * @param UsrGrpVO
+	 * @return int
+	 */
 	public int insertUsr(UsrGrpVO usrGrpVO) { 
 		return loginMapper.insertUsr(usrGrpVO); 
+	}
+	
+	/**
+	 * SHA-256 방식 암호화
+	 * @param UsrGrpVO
+	 * @return int
+	 * @throws NoSuchAlgorithmException 
+	 */
+	public String getEncryptResult(String encryptStr) throws NoSuchAlgorithmException {
+        // Base64 인코딩된 암호화 문자열
+        String encrypted = SHA256Util.getEncrypt(encryptStr);
+        System.out.println("암호화 : " + encrypted);
+        
+        // SHA256Util의 암호화 메소드 수행 중 오류 발생 시 오류 throw
+        if ( StringUtil.isEmpty(encrypted) ) {
+        	throw new NoSuchAlgorithmException();
+        }
+        
+        return encrypted;
 	}
 	
 }
