@@ -6,34 +6,26 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-import com.eunjy.stockid.utiliy.Consts;
-
 
 /**
  * @author YunJi
  * 카테고리 별 포스트
  */
 @Controller
+@RequestMapping(value = "{grpUrl}")
 public class PostController {
 
-	@RequestMapping(value = "/{investType}/list.do", method = RequestMethod.GET) 
-	public String postList(@PathVariable("investType") String investType, Model model) {
-		String investTypeVal = "00"; // CMMN_CD_INFO 의 INVEST_TYPE(투자 유형) 그룹 값 (01:주식/02:코인) 
-		if (Consts.InvestType.INVEST_STOCK.equals(investType)) {
-			investTypeVal = "01";
-		} else if (Consts.InvestType.INVEST_COIN.equals(investType)) {
-			investTypeVal = "02";
-		} else {
-			return "";
-		}
-		System.out.println("investType : " + investType);
-		System.out.println("investTypeVal : " + investTypeVal);
+	@RequestMapping(value = "/list.do", method = RequestMethod.POST) 
+	public String postList(@PathVariable("grpUrl") String grpUrl, Model model) {
+		System.out.println("grpUrl : " + grpUrl);
 		
 		return "post/postList"; 
 	}
 	
-	@RequestMapping(value = "/post/write.do", method = RequestMethod.GET) 
-	public String postWrite(Model model) { 
+	@RequestMapping(value = "/write.do", method = RequestMethod.GET) 
+	public String postWrite(@PathVariable("grpUrl") String grpUrl, Model model) { 
+		System.out.println("grpUrl : " + grpUrl);
+		
 		return "post/postWrite"; 
 	}
 

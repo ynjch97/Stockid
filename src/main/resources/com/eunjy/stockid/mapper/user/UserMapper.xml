@@ -7,6 +7,7 @@
 			COUNT(1) OVER() AS TOTAL_CNT
 			, G.GRP_NUM
 		    , G.GRP_NM
+    		, GRP_URL
 			, R.USR_TYPE
 		    , GET_CODE_NAME('USR_TYPE', R.USR_TYPE) AS USR_TYPE_NM /*나의 회원 유형*/
 		    , G.OPEN_YN

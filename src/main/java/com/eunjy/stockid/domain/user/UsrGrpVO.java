@@ -24,6 +24,7 @@ public class UsrGrpVO {
 
 	// 그룹
 	private String grpNm;
+	private String grpUrl;
 	private String grpPtcpCd;
 	private String grpExpln;
 	private String headUsrNum;

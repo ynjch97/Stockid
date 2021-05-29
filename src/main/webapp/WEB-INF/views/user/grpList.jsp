@@ -33,8 +33,8 @@
 	}).on("click","#userInfoBtn",function(){ // 개인정보 수정으로 이동
 		goUserInfo();
 	}).on("click",".grpMain",function(){ // 그룹 메인으로 이동
-		var grpNum = $(this).parent("li").data("grpNum");
-		goMain(grpNum);
+		var grpUrl = $(this).parent("li").data("grpUrl");
+		goMain(grpUrl);
 	}).on("click",".grpSetting",function(){ // 그룹 설정으로 이동
 		var grpNum = $(this).parent("li").data("grpNum");
 		goSetting(grpNum);
@@ -58,7 +58,7 @@
 			$(".tit-wrap span:first-child").show();
 			$.each(grpList, function(idx, grp) {
 				var $grpLi = $(".grp-wrap ul li").eq(0).hide().clone(); // 첫 번째 항목 숨기기
-				$grpLi.show().attr("data-grp-num", grp.grpNum).find("span:first-child").text(grp.grpNm); // data, 이름 세팅
+				$grpLi.show().attr("data-grp-num", grp.grpNum).attr("data-grp-url", grp.grpUrl).find("span:first-child").text(grp.grpNm); // data, 이름 세팅
 				$(".grp-wrap ul").append($grpLi);
 		    });
 		    
@@ -73,8 +73,8 @@
 	}
 	
 	// 3. 해당 그룹 메인으로 이동
-	function goMain(grpNum) {
-		alert("메인 : " + grpNum);
+	function goMain(grpUrl) {
+		movePage("/" + grpUrl + "/main.do");
 	}
 	
 	// 4. 해당 그룹 설정으로 이동

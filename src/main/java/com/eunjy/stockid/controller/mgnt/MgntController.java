@@ -13,7 +13,7 @@ import com.eunjy.stockid.domain.user.UsrGrpVO;
 import com.eunjy.stockid.service.user.UserService;
 
 @Controller
-public class MainController {
+public class MgntController {
 
 	@Autowired
 	UserService userService; 

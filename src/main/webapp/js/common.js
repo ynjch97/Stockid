@@ -4,21 +4,40 @@
 
 // 페이지 이동
 function movePage(urlStr, param) {
+	/*
+		param 값은 다음과 같이 작성
+		var obj = new Object();
+		obj.grpNum = grpNum;
+	*/
+	
 	$("#_tempForm").remove();
-	var sHtml = '';
-	sHtml += '<form id="_tempForm" action="' + urlStr + '" method="post">';
-	sHtml += '</form>';
-	$("body").append(sHtml);
+	
+	var tempForm = $("<form>", {
+		id: "_tempForm", 
+		method: "post", 
+		// target: target, 
+		action: urlStr
+	}).appendTo("body");
 	
 	if (param != null) {
+		var inpHtml = ""; 
+		for (var [key, value] of Object.entries(param)) {
+		  console.log(key + " : " + value);
+		  inpHtml += '<input type="hidden" name="' + key + '" value="' + value + '" />'; 
+		}
+		$("#_tempForm").appendTo(inpHtml);
+	}
+	 
+	tempForm.submit();
+
+	/*if (param != null) {
 		var keys = Object.keys(param);
 		for (var i=0; i<keys.length; i++) {
 			var key = keys[i];
 			$("#_tempForm").append('<input type="hidden" name="' + key + '"/>');
 			$("#_tempForm input:last").val(param[key]);
 		}
-	}
-	$("#_tempForm").submit();
+	}*/
 }
 
 /*
