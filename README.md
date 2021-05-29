@@ -7,7 +7,7 @@ Stock + Kid, 주린이들을 위한 주식 정보 공유 사이트
 SiteMesh 설정  
 로그인, 그룹 선택, 회원가입 화면 추가  
 resultVO, common.js 등 공통화 작업  
-RSAUtil 암호화(삭제)  
+로그인 암호화 RSAUtil 적용(삭제)  
 
 ### 5월 3주차
 그룹 선택 화면 관련 쿼리 작성  
@@ -25,6 +25,8 @@ css 파일 용도별 세분화
 header 디자인  
 
 ### 5월 5주차
+로그인 암호화 SHA256Util 적용  
+JavaScript - Controller 전달 시 Base64 인코딩 
 
 ### 5월 6주차
 그룹별 메인 화면 추가  
