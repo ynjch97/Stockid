@@ -77,18 +77,18 @@
 				console.log(data);
 				if (data.isSuccess) {
 					var resultMsg = data.resultMsg;
-					if (resultMsg == "GO_MAIN") {
+					if (resultMsg == "LOGIN_SUCCESS") {
 						movePage("/user/grpList.do");
-					} else if (resultMsg == "ERROR_INPUT_NULL") {
+					} else if (resultMsg == "ERR_INPUT_NULL") {
 						alert("잘못된 입력값입니다.\r\n아이디와 비밀번호를 다시 확인해주세요.");
 			    		deleteCookie("usercookieId");
 					} else if (resultMsg == "LOGIN_FAIL") {
 						alert("로그인에 실패하였습니다.");
 			    		deleteCookie("usercookieId");
-					} else if (resultMsg == "ALREADY_LOGGED_IN") {
+					} else if (resultMsg == "ERR_ALREADY_LOGGED_IN") {
 						alert("이미 로그인 되어있습니다. 메인으로 이동합니다.");
 						movePage("/user/grpList.do");
-					} else if (resultMsg == "ID_DOES_NOT_EXIST") {
+					} else if (resultMsg == "ERR_ID_NOT_EXIST") {
 			    		alert("존재하지 않는 아이디입니다.");
 			    		deleteCookie("usercookieId");
 					}

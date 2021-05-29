@@ -34,17 +34,22 @@ public class LoginService {
 		
 		// 데이터 NULL 체크
 		if ( StringUtils.isEmpty(usrGrpVO.getUsrId()) || StringUtils.isEmpty(usrGrpVO.getUsrPw()) ) {
-			return "ERROR_INPUT_NULL";
+			return "ERR_INPUT_NULL";
 		} else {
-			// 회원 존재 유무 확인 조회
+			// 해당 아이디의 사용자가 존재할 경우
 			if ( loginMapper.countLoginId(usrGrpVO) > 0 ) {
+				
 				// IP확인
 				String remoteAddress = request.getRemoteAddr();
+				String remoteHost = request.getRemoteHost();
+				System.out.println("remoteAddress : " + remoteAddress);
+				System.out.println("remoteHost : " + remoteHost);
 				
-				// login check
+				// login check (비밀번호 암호화 후 해당 사용자 정보 가져오기)
+				usrGrpVO.setUsrPw( getEncryptResult(usrGrpVO.getUsrPw()) );
 				SessionUser sessionUser = getSessionUser(usrGrpVO);
 				
-				if (sessionUser != null) { //로그인 성공
+				if (sessionUser != null) { // 로그인 성공
 					// session create
 					HttpSession session = request.getSession(true);
 					session.removeAttribute(Consts.SessionAttr.USER);
@@ -60,17 +65,17 @@ public class LoginService {
 						}
 					} else {
 						if (loginManager.isUsing(userId)) {
-							return "ALREADY_LOGGED_IN";
+							return "ERR_ALREADY_LOGGED_IN";
 						}
 					}
 					
 					loginManager.setSession(session);
-					resultMsg = "GO_MAIN";
-				} else { //로그인 실패
+					resultMsg = "LOGIN_SUCCESS";
+				} else { // 로그인 실패
 					resultMsg = "LOGIN_FAIL";
 				}
 			}else{
-				resultMsg = "ID_DOES_NOT_EXIST";
+				resultMsg = "ERR_ID_NOT_EXIST";
 			}
 		}
 		

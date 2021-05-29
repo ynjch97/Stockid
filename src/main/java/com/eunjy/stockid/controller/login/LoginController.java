@@ -35,24 +35,21 @@ public class LoginController {
 			, @RequestParam(required = false) String isForce
 			, HttpServletRequest request) throws Exception { 
 		
-		System.out.println("loginId : " + loginId + " / loginPw : " + loginPw); 
+		// Base64 인코딩 문자열 디코딩 후 로그인 실행
+		// TODO isForce 값 관련 개발 필요
 		boolean isForceVal = Boolean.parseBoolean(isForce);
 		usrGrpVO.setUsrId( StringUtil.decode(loginId) );
 		usrGrpVO.setUsrPw( StringUtil.decode(loginPw) );
 
-		System.out.println("loginId : " + usrGrpVO.getUsrId() + " / loginPw : " + usrGrpVO.getUsrPw()); 
-		
 		String resultMsg = loginService.login(usrGrpVO, isForceVal, request);
 		ResultVo resultVo = new ResultVo(ResultStatus.SUCCESS, resultMsg);
 		System.out.println("loginProcess resultMsg : " + resultMsg); 
 		
 		return resultVo;
-		
 	}
 
 	@RequestMapping(value = "/login/join.do", method = {RequestMethod.POST, RequestMethod.GET}) 
 	public String join(Model model) { 
-		System.out.println("home controller start"); 
 		return "login/join"; 
 	}
 	
