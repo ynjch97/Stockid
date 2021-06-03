@@ -10,6 +10,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import com.eunjy.stockid.domain.common.SessionUser;
 import com.eunjy.stockid.domain.user.UsrGrpVO;
 import com.eunjy.stockid.service.user.UserService;
 import com.eunjy.stockid.utiliy.Consts;
@@ -24,13 +25,14 @@ public class UserController {
 
 	@RequestMapping(value = "/user/grpList.do", method = {RequestMethod.POST, RequestMethod.GET}) 
 	public String grpList(Model model, UsrGrpVO usrGrpVO, HttpSession httpSession) { 
-		usrGrpVO.setUsrNum("2");// test
+		SessionUser sessionUser = (SessionUser) httpSession.getAttribute(Consts.SessionAttr.USER);
+		if (sessionUser != null) usrGrpVO.setUsrNum( sessionUser.getUsrNum() );
+		
 		ObjectMapper obj = new ObjectMapper(); 
 		List<UsrGrpVO> myGrpList = userService.getMyGrpList(usrGrpVO);
-		
 		try {
 			model.addAttribute("myGrpList", obj.writeValueAsString(myGrpList));
-			model.addAttribute("sessionTest", httpSession.getAttribute(Consts.SessionAttr.USER));
+			model.addAttribute("sessionTest", sessionUser);
 		} catch (JsonProcessingException e) {
 			e.printStackTrace();
 		}
