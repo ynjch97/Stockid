@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?> 
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd"> 
+<mapper namespace="com.eunjy.stockid.mapper.post.PostMapper"> 
+	
+	<select id="getPostList" parameterType="com.eunjy.stockid.domain.post.PostMainVO" resultType="com.eunjy.stockid.domain.post.PostMainVO"> 
+		SELECT 
+			P.POST_NUM
+		    , P.GRP_NUM
+		    , G.GRP_NM
+    		, G.GRP_URL
+		    , P.CTGRY_NUM
+		    , C.CTGRY_NM
+		    , P.POST_TITLE
+		    , P.VIEW_CNT
+		    , P.REG_ID
+		    , P.REG_DT
+		FROM POST_INFO P
+		JOIN CTGRY_INFO C
+			ON P.CTGRY_NUM = C.CTGRY_NUM
+		JOIN GRP_INFO G
+			ON P.GRP_NUM = G.GRP_NUM
+		WHERE G.GRP_URL = #{grpUrl}
+			AND P.CTGRY_NUM = #{ctgryNum}
+		    AND P.USE_YN = 'Y'
+		    AND P.DEL_YN = 'N'
+		    AND C.USE_YN = 'Y'
+		    AND C.DEL_YN = 'N'
+	</select>
+
+</mapper>

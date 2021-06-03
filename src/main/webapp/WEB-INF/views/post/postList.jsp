@@ -23,7 +23,7 @@
 			<tbody>
 				<tr>
 					<td>1</td>
-					<td class="subject">삼성전자</td>
+					<td class="subject">삼성전자 ${postList}</td>
 					<td>차윤지</td>
 					<td>2020.02.02</td>
 					<td>2020.02.02</td>
