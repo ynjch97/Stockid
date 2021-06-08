@@ -5,6 +5,8 @@ import java.security.NoSuchAlgorithmException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
@@ -20,6 +22,8 @@ import com.eunjy.stockid.utiliy.StringUtil;
 @Service
 public class LoginService {
 
+	private static final Logger logger = LoggerFactory.getLogger(LoginService.class);
+	
 	@Autowired
 	private LoginMapper loginMapper;
 	
@@ -42,8 +46,8 @@ public class LoginService {
 				// IP확인
 				String remoteAddress = request.getRemoteAddr();
 				String remoteHost = request.getRemoteHost();
-				System.out.println("remoteAddress : " + remoteAddress);
-				System.out.println("remoteHost : " + remoteHost);
+				logger.debug("remoteAddress : {}", remoteAddress);
+				logger.debug("remoteHost : {}", remoteHost);
 				
 				// login check (비밀번호 암호화 후 해당 사용자 정보 가져오기)
 				usrGrpVO.setUsrPw( getEncryptResult(usrGrpVO.getUsrPw()) );
@@ -111,7 +115,7 @@ public class LoginService {
 	public String getEncryptResult(String encryptStr) throws NoSuchAlgorithmException {
         // Base64 인코딩된 암호화 문자열
         String encrypted = SHA256Util.getEncrypt(encryptStr);
-        System.out.println("암호화 : " + encrypted);
+        logger.debug("암호화 : {}", encrypted);
         
         // SHA256Util의 암호화 메소드 수행 중 오류 발생 시 오류 throw
         if ( StringUtil.isEmpty(encrypted) ) {

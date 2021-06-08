@@ -2,6 +2,8 @@ package com.eunjy.stockid.controller.mgnt;
 
 import java.util.List;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -15,31 +17,31 @@ import com.eunjy.stockid.service.user.UserService;
 @Controller
 public class MgntController {
 
+	private static final Logger logger = LoggerFactory.getLogger(MgntController.class);
+	
 	@Autowired
 	UserService userService; 
 	
 	@RequestMapping(value = "/mgnt/userList.do", method = RequestMethod.GET) 
 	public String userList(Model model) { 
-		System.out.println("mgnt/userList"); 
 		return "mgnt/userList"; 
 	}
 
 	@RequestMapping(value = "/welcome.do", method = RequestMethod.GET) 
 	public String thymeLeafTest(Model model) { 
-		System.out.println("thymeleaf!!"); 
 		model.addAttribute("name", "hi");
 		return "thymeleaf/welcome"; 
 	}
 	
 	@RequestMapping(value = "/mgnt/getUserList.do", method = RequestMethod.GET) 
 	public @ResponseBody List<UsrGrpVO> getUserList(Model model) { 
-		System.out.println("mgnt/getUserList (수정 0304)"); 
+		logger.debug("mgnt/getUserList (수정 0304)"); 
 		List<UsrGrpVO> userList = userService.getMyGrpList(new UsrGrpVO());
-		System.out.println("userList size >>> " + userList.size()); 
+		logger.debug("userList size >>> " + userList.size()); 
 		
 		if (userList.size() > 0) {
 			for (int i=0; i<userList.size(); i++) {
-				System.out.println(userList.get(i).toString());
+				logger.debug(userList.get(i).toString());
 			}
 		}
 		return userList;
