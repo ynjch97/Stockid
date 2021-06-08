@@ -17,7 +17,7 @@ import com.eunjy.stockid.service.user.UserService;
 @Controller
 public class MgntController {
 
-	private static final Logger logger = LoggerFactory.getLogger(MgntController.class);
+	private final Logger logger = LoggerFactory.getLogger(this.getClass());
 	
 	@Autowired
 	UserService userService; 

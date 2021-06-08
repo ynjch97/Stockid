@@ -23,7 +23,7 @@ import com.eunjy.stockid.utiliy.StringUtil;
 @Controller
 public class LoginController {
 	
-	private static final Logger logger = LoggerFactory.getLogger(LoginController.class);
+	private final Logger logger = LoggerFactory.getLogger(this.getClass());
 	
 	@Autowired
 	LoginService loginService; 

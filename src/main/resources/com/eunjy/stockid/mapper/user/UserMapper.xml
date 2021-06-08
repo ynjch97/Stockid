@@ -3,6 +3,7 @@
 <mapper namespace="com.eunjy.stockid.mapper.user.UserMapper"> 
 	
 	<select id="getMyGrpList" parameterType="com.eunjy.stockid.domain.user.UsrGrpVO" resultType="com.eunjy.stockid.domain.user.UsrGrpVO"> 
+		/* UserMapper.xml.getMyGrpList */
 		SELECT
 			COUNT(1) OVER() AS TOTAL_CNT
 			, G.GRP_NUM

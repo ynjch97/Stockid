@@ -24,8 +24,8 @@
 	-->
 
     <!-- pattern -->
-    <!-- [%-5level] %d{yy-MM-dd HH:mm:ss} [%logger{0}:%line] - %msg%n -->
-    <property name="LOG_PATTERN" value="[%-5level]	%d{YYYY-MM-dd HH:mm:ss.SSS}	%logger{36} - %msg %n"/>
+    <!-- [%-5level] %d{yy-MM-dd HH:mm:ss} %logger{36} - %msg%n -->
+    <property name="LOG_PATTERN" value="[%-5level]	%d{YYYY-MM-dd HH:mm:ss.SSS}	[%logger{0}:%line] - %msg %n"/>
 
     <!-- Console Appender -->
     <appender name="CONSOLE" class="ch.qos.logback.core.ConsoleAppender">
@@ -63,6 +63,7 @@
     <!-- 특정패키지 로깅레벨 설정 -->
    	<logger name="org.mybatis" level="DEBUG" additivity="false">
         <appender-ref ref="CONSOLE"/>
+        <appender-ref ref="LOG_FILE"/>
     </logger>
     
 </configuration>

@@ -25,7 +25,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 @RequestMapping(value = "{grpUrl}")
 public class PostController {
 
-	private static final Logger logger = LoggerFactory.getLogger(PostController.class);
+	private final Logger logger = LoggerFactory.getLogger(this.getClass());
 	
 	@Autowired
 	PostService postService; 

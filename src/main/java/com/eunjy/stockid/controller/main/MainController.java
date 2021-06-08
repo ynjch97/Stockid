@@ -17,7 +17,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 @RequestMapping(value = "{grpUrl}")
 public class MainController {
 
-	private static final Logger logger = LoggerFactory.getLogger(MainController.class);
+	private final Logger logger = LoggerFactory.getLogger(this.getClass());
 	
 	@RequestMapping(value = "/main.do", method = {RequestMethod.POST, RequestMethod.GET}) 
 	public String mainPage(@PathVariable("grpUrl") String grpUrl, Model model) {
