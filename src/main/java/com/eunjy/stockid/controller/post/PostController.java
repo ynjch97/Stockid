@@ -16,23 +16,24 @@ import com.eunjy.stockid.service.post.PostService;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
+import lombok.extern.slf4j.Slf4j;
+
 
 /**
  * @author YunJi
  * 카테고리 별 포스트
  */
+@Slf4j
 @Controller
 @RequestMapping(value = "{grpUrl}")
 public class PostController {
-
-	private final Logger logger = LoggerFactory.getLogger(this.getClass());
 	
 	@Autowired
 	PostService postService; 
 	
 	@RequestMapping(value = "/list.do", method = {RequestMethod.POST, RequestMethod.GET}) 
 	public String postList(@PathVariable("grpUrl") String grpUrl, PostMainVO postMainVO, Model model) {
-		logger.debug("grpUrl : {}", grpUrl);
+		log.debug("grpUrl : {}", grpUrl);
 		
 		ObjectMapper obj = new ObjectMapper(); 
 		postMainVO.setGrpUrl(grpUrl);
@@ -49,7 +50,7 @@ public class PostController {
 	
 	@RequestMapping(value = "/write.do", method = RequestMethod.GET) 
 	public String postWrite(@PathVariable("grpUrl") String grpUrl, Model model) { 
-		logger.debug("grpUrl : {}", grpUrl);
+		log.debug("grpUrl : {}", grpUrl);
 		return "post/postWrite"; 
 	}
 

@@ -51,19 +51,19 @@
 
 	<logger name="jdbc.sqlonly" level="debug" />
 	<logger name="jdbc.resultsettable" level="debug" />
-	<logger name="com.eunjy" level="debug"/>
-
-    <!-- root 레벨 설정 -->
-    <root level="DEBUG">
-		<level value="debug" />
-        <appender-ref ref="CONSOLE"/>
-        <appender-ref ref="LOG_FILE"/>
-    </root>
+	<logger name="com.eunjy.stockid" level="debug"/>
 
     <!-- 특정패키지 로깅레벨 설정 -->
    	<logger name="org.mybatis" level="DEBUG" additivity="false">
         <appender-ref ref="CONSOLE"/>
         <appender-ref ref="LOG_FILE"/>
     </logger>
+    
+    <!-- root 레벨 설정 -->
+    <root level="debug">
+		<!-- <level value="debug" /> -->
+        <appender-ref ref="CONSOLE"/>
+        <appender-ref ref="LOG_FILE"/>
+    </root>
     
 </configuration>

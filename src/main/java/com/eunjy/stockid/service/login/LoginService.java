@@ -19,10 +19,11 @@ import com.eunjy.stockid.utiliy.LoginManager;
 import com.eunjy.stockid.utiliy.SHA256Util;
 import com.eunjy.stockid.utiliy.StringUtil;
 
+import lombok.extern.slf4j.Slf4j;
+
+@Slf4j
 @Service
 public class LoginService {
-
-	private final Logger logger = LoggerFactory.getLogger(this.getClass());
 	
 	@Autowired
 	private LoginMapper loginMapper;
@@ -46,8 +47,8 @@ public class LoginService {
 				// IP확인
 				String remoteAddress = request.getRemoteAddr();
 				String remoteHost = request.getRemoteHost();
-				logger.debug("remoteAddress : {}", remoteAddress);
-				logger.debug("remoteHost : {}", remoteHost);
+				log.debug("remoteAddress : {}", remoteAddress);
+				log.debug("remoteHost : {}", remoteHost);
 				
 				// login check (비밀번호 암호화 후 해당 사용자 정보 가져오기)
 				usrGrpVO.setUsrPw( getEncryptResult(usrGrpVO.getUsrPw()) );
@@ -115,7 +116,7 @@ public class LoginService {
 	public String getEncryptResult(String encryptStr) throws NoSuchAlgorithmException {
         // Base64 인코딩된 암호화 문자열
         String encrypted = SHA256Util.getEncrypt(encryptStr);
-        logger.debug("암호화 : {}", encrypted);
+        log.debug("암호화 : {}", encrypted);
         
         // SHA256Util의 암호화 메소드 수행 중 오류 발생 시 오류 throw
         if ( StringUtil.isEmpty(encrypted) ) {

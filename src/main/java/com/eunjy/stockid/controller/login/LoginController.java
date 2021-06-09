@@ -4,8 +4,6 @@ import java.security.NoSuchAlgorithmException;
 
 import javax.servlet.http.HttpServletRequest;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -20,10 +18,11 @@ import com.eunjy.stockid.domain.user.UsrGrpVO;
 import com.eunjy.stockid.service.login.LoginService;
 import com.eunjy.stockid.utiliy.StringUtil;
 
+import lombok.extern.slf4j.Slf4j;
+
+@Slf4j
 @Controller
 public class LoginController {
-	
-	private final Logger logger = LoggerFactory.getLogger(this.getClass());
 	
 	@Autowired
 	LoginService loginService; 
@@ -47,7 +46,7 @@ public class LoginController {
 
 		String resultMsg = loginService.login(usrGrpVO, isForceVal, request);
 		ResultVo resultVo = new ResultVo(ResultStatus.SUCCESS, resultMsg);
-		logger.debug("loginProcess resultMsg : {}", resultMsg); 
+		log.debug("loginProcess resultMsg : {}", resultMsg); 
 		
 		return resultVo;
 	}
@@ -65,7 +64,7 @@ public class LoginController {
 			usrGrpVO.setUsrPw( loginService.getEncryptResult(usrGrpVO.getUsrPw()) );
 			result = loginService.insertUsr(usrGrpVO);
 		} catch (NoSuchAlgorithmException ex) {
-			logger.error("Error : {}", ex);
+			log.error("Error : {}", ex);
 		}
 				
 		if (result == 1) {
