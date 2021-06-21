@@ -1,0 +1,9 @@
+no_session:
+  login:  /login/login
+  join: /login/join
+  
+test: 
+  tests: 
+    - name: banana
+    - name: apple
+    - name: water melon
