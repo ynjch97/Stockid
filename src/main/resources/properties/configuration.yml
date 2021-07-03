@@ -2,8 +2,11 @@ no_session:
   login:  /login/login
   join: /login/join
   
-test: 
-  tests: 
+fruit:
+  fruits:
     - name: banana
+      color: yellow
     - name: apple
+      color: red
     - name: water melon
+      color: green

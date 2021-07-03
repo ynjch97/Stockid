@@ -7,12 +7,14 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
 
 import com.eunjy.stockid.domain.common.SessionUser;
 import com.eunjy.stockid.utiliy.Consts;
+import com.eunjy.stockid.utiliy.ConfigurationYaml;
 
 import lombok.extern.slf4j.Slf4j;
 
@@ -25,9 +27,11 @@ import lombok.extern.slf4j.Slf4j;
 public class LoginInterceptor extends HandlerInterceptorAdapter {
 
 	private String redirectPage = "";
-	// private List<Map<String, String>> tests = Consts.NoSession.tests; 
 	private List<String> noSession;
 	private List<String> noSessionPattern;
+	
+	@Autowired
+	private ConfigurationYaml propertiesYaml;
 	
 	@Override
 	public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler)
@@ -45,8 +49,10 @@ public class LoginInterceptor extends HandlerInterceptorAdapter {
 		String usrId = "";
 		HttpSession httpSession = request.getSession();
 		SessionUser sessionUser = (SessionUser) httpSession.getAttribute(Consts.SessionAttr.USER);
-		
-		log.debug("sessionUser : {}", sessionUser);
+
+		List<Map<String, String>> fruits = propertiesYaml.getFruits();
+		log.debug("fruits  : {}", fruits.size());
+		log.debug("fruits  : {}", fruits.get(0).get("color"));
 		
 		// login check
 		if ( !isChkSession(requestUri) ) {
