@@ -26,9 +26,11 @@ import lombok.Setter;
  */
 @Configuration //value를 통해 값이 있는 위치를 명시해준다.
 @PropertySource(value = "classpath:properties/configuration.yml", factory = YamlPropertySourceFactory.class) // yml 파일에서 가져올 변수 이름을 명시해준다. 
-@ConfigurationProperties(prefix = "fruit") 
+@ConfigurationProperties(prefix = "settings") 
 @Setter 
 @Getter
 public class ConfigurationYaml {
+	private List<String> noSession;
+	private List<Map<String, String>> loginRslt;
 	private List<Map<String, String>> fruits;
 }

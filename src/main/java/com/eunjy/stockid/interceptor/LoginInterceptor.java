@@ -50,10 +50,6 @@ public class LoginInterceptor extends HandlerInterceptorAdapter {
 		HttpSession httpSession = request.getSession();
 		SessionUser sessionUser = (SessionUser) httpSession.getAttribute(Consts.SessionAttr.USER);
 
-		List<Map<String, String>> fruits = propertiesYaml.getFruits();
-		log.debug("fruits  : {}", fruits.size());
-		log.debug("fruits  : {}", fruits.get(0).get("color"));
-		
 		// login check
 		if ( !isChkSession(requestUri) ) {
 			log.debug("세션 체크 페이지 아님");
@@ -115,22 +111,24 @@ public class LoginInterceptor extends HandlerInterceptorAdapter {
 	}
 	
 	private boolean isChkSession(String reqURI) {
-		// TODO
-		// String[] requestArr = reqURI.split("/");
+		noSession = propertiesYaml.getNoSession();
 		
 		if ( noSession.contains(reqURI) ) { // 세션 체크 예외 페이지
 			return false;
 		}
 		
+		/*
 		for ( String pathPattern : noSessionPattern ) { // 세션 체크 예외 페이지 패턴
 			if ( reqURI.indexOf( pathPattern.substring(0, pathPattern.indexOf("/*")) ) == 0 ) {
 				return false;
 			}
 			
-			/*if (StringUtils.countMatches(reqURI, "/") != StringUtils.countMatches(pathPattern, "/")) {
+			if (StringUtils.countMatches(reqURI, "/") != StringUtils.countMatches(pathPattern, "/")) {
 				continue;
-			}*/
+			}
 		}
+		*/
+		
 		return true;
 	}
 
