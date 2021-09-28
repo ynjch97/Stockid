@@ -31,3 +31,6 @@ JavaScript - Controller 전달 시 Base64 인코딩
 ### 5월 6주차
 그룹별 메인 화면 추가  
 url 패턴 재정의 -> [그룹url]/main.do [그룹url]/list.do [그룹url]/write.do  
+
+### 9월 5주차
+LoginInterceptor 수정 (yml 파일 이용해 세션 체크 제외 페이지 )
