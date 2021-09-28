@@ -32,5 +32,18 @@ JavaScript - Controller 전달 시 Base64 인코딩
 그룹별 메인 화면 추가  
 url 패턴 재정의 -> [그룹url]/main.do [그룹url]/list.do [그룹url]/write.do  
 
+### 6월 1주차
+카테고리별 포스트 목록 가져오기 화면 구현
+
+### 6월 2주차
+log 파일 설정
+LoginInterceptor 설정 
+
+### 6월 4주차
+LoginInterceptor 수정 (세션 체크 제외 페이지 설정)
+
+### 7월 1주차
+LoginInterceptor 수정 (yml 파일 이용)
+
 ### 9월 5주차
-LoginInterceptor 수정 (yml 파일 이용해 세션 체크 제외 페이지 )
+LoginInterceptor 수정 (yml 파일 이용해 세션 체크 제외 페이지 세팅)
