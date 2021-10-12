@@ -25,6 +25,9 @@ dependencies {
 	// Thymeleaf(텍스트 템플릿 엔진) : templates 폴더 내에 html 파일을 만들어 사용하게 됨
 	implementation('nz.net.ultraq.thymeleaf:thymeleaf-layout-dialect')
 	
+    // StringUtils 를 사용하기 위함
+    compile  'org.apache.commons:commons-lang3:3.0'
+	
 	// MySQL DB 연동
 	// implementation 'org.springframework.boot:spring-boot-starter-data-jdbc'
 	// implementation 'org.mybatis.spring.boot:mybatis-spring-boot-starter:2.1.4'

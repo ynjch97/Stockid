@@ -32,7 +32,7 @@ public class LoginController {
 		return "login/login"; 
 	}
 	
-	@RequestMapping(value = "/login/loginProcess.do", method = RequestMethod.POST) 
+	@RequestMapping(value = "/login/ajax.loginProcess.do", method = RequestMethod.POST) 
 	public @ResponseBody ResultVo loginProcess(Model model, UsrGrpVO usrGrpVO
 			, @RequestParam(required = true) String loginId, @RequestParam(required = true) String loginPw
 			, @RequestParam(required = false) String isForce
@@ -56,7 +56,7 @@ public class LoginController {
 		return "login/join"; 
 	}
 	
-	@RequestMapping(value = "/login/joinUsr.do", method = RequestMethod.POST) 
+	@RequestMapping(value = "/login/ajax.joinProcess.do", method = RequestMethod.POST) 
 	public @ResponseBody ResultVo getUserList(Model model, UsrGrpVO usrGrpVO) { 
 		int result = 0;
 		

@@ -7,6 +7,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.web.servlet.ModelAndView;
@@ -112,14 +113,14 @@ public class LoginInterceptor extends HandlerInterceptorAdapter {
 	
 	private boolean isChkSession(String reqURI) {
 		noSession = propertiesYaml.getNoSession();
+		noSessionPattern = propertiesYaml.getNoSessionPattern();
 		
 		if ( noSession.contains(reqURI) ) { // 세션 체크 예외 페이지
 			return false;
 		}
 		
-		/*
 		for ( String pathPattern : noSessionPattern ) { // 세션 체크 예외 페이지 패턴
-			if ( reqURI.indexOf( pathPattern.substring(0, pathPattern.indexOf("/*")) ) == 0 ) {
+			if ( reqURI.matches(pathPattern) ) {
 				return false;
 			}
 			
@@ -127,7 +128,6 @@ public class LoginInterceptor extends HandlerInterceptorAdapter {
 				continue;
 			}
 		}
-		*/
 		
 		return true;
 	}

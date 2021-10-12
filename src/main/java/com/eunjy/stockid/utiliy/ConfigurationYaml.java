@@ -6,7 +6,6 @@ import java.util.Map;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.PropertySource;
-import org.springframework.stereotype.Component;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -31,6 +30,6 @@ import lombok.Setter;
 @Getter
 public class ConfigurationYaml {
 	private List<String> noSession;
-	private List<Map<String, String>> loginRslt;
+	private List<String> noSessionPattern;
 	private List<Map<String, String>> fruits;
 }

@@ -29,7 +29,7 @@
 	}).on("click","#loginBtn",function(){ // 로그인
 		login();
 	}).on("click","#joinBtn",function(){ // 회원가입
-		window.location = "/login/join.do";
+		movePage("/login/join.do");
 	}).on("click","#findIdPw",function(){ // ID, PW 찾기
 		window.location = "www.naver.com";
 	})
@@ -67,14 +67,13 @@
 		$.ajax({
 			type: "POST",
 			enctype: 'multipart/form-data',
-			url : '/login/loginProcess.do',
+			url : '/login/ajax.loginProcess.do',
 			data : formData,
-			processData: false,
+			processData: false, // 내부적으로 query string 만드는 것 방지
 			contentType: false,
 			cache: false,
 			timeout: 600000,
 			success : function(data) {
-				console.log(data);
 				if (data.isSuccess) {
 					var resultMsg = data.resultMsg;
 					if (resultMsg == "LOGIN_SUCCESS") {

@@ -2,17 +2,8 @@ settings:
   no_session: # 세션 체크 제외 페이지 
     - /login/login.do
     - /login/join.do
-  login_rslt: # 로그인 결과
-    - rslt_type: LOGIN_SUCCESS
-      rslt_cd: 00100
-    - rslt_type: LOGIN_FAIL
-      rslt_cd: 00200
-    - rslt_type: ERR_INPUT_NULL
-      rslt_cd: 00301
-    - rslt_type: ERR_ALREADY_LOGGED_IN
-      rslt_cd: 00302
-    - rslt_type: ERR_ID_NOT_EXIST
-      rslt_cd: 00303
+  no_session_pattern: # 세션 체크 제외 페이지 패턴
+    - "/(.*)/ajax.(.*)Process.do"
   fruits:
     - name: banana
       color: yellow

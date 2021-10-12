@@ -59,7 +59,7 @@
 		$.ajax({
 			type: "POST",
 			enctype: 'multipart/form-data',
-			url: '/login/joinUsr.do',
+			url: '/login/ajax.joinProcess.do',
 			data: formData,
 			processData: false,
 			contentType: false,

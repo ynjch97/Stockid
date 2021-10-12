@@ -1,6 +1,7 @@
 package com.eunjy.stockid.service.login;
 
 import java.security.NoSuchAlgorithmException;
+import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -39,7 +40,7 @@ public class LoginService {
 		
 		// 데이터 NULL 체크
 		if ( StringUtils.isEmpty(usrGrpVO.getUsrId()) || StringUtils.isEmpty(usrGrpVO.getUsrPw()) ) {
-			return "ERR_INPUT_NULL";
+			resultMsg = Consts.LoginResult.ERR_INPUT_NULL;
 		} else {
 			// 해당 아이디의 사용자가 존재할 경우
 			if ( loginMapper.countLoginId(usrGrpVO) > 0 ) {
@@ -70,17 +71,17 @@ public class LoginService {
 						}
 					} else {
 						if (loginManager.isUsing(userId)) {
-							return "ERR_ALREADY_LOGGED_IN";
+							resultMsg = Consts.LoginResult.ERR_ALREADY_LOGGED_IN;
 						}
 					}
 					
 					loginManager.setSession(session);
-					resultMsg = "LOGIN_SUCCESS";
+					resultMsg = Consts.LoginResult.LOGIN_SUCCESS;
 				} else { // 로그인 실패
-					resultMsg = "LOGIN_FAIL";
+					resultMsg = Consts.LoginResult.LOGIN_FAIL;
 				}
-			}else{
-				resultMsg = "ERR_ID_NOT_EXIST";
+			} else {
+				resultMsg = Consts.LoginResult.ERR_ID_NOT_EXIST;
 			}
 		}
 		
