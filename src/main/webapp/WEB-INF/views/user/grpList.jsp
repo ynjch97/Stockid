@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
+<c:set var="sessionUser" value="${sessionScope.session_user}" />
 
 <div class="login">
 	<div>
@@ -9,7 +11,7 @@
 		</div>
 		<div class="no-grp-wrap" style="display: none;">
 			<p>가입된 그룹이 없습니다.</p>
-			<p>그룹을 생성하거나</p>
+			<p>${sessionUser.usrNick}님의 그룹을 생성하거나</p>
 			<p>초대 코드를 입력해 가입해보세요.</p>
 		</div>
 		<div class="grp-wrap" style="display: none;">
@@ -21,7 +23,7 @@
 			<button class="btn-join-grp disabled">그룹 참여하기</button>
 			<button class="btn-crt-grp disabled">그룹 생성하기</button>
 		</div>
-		<span class="grp-noti red">* 그룹은 총 5개까지만 참여 가능합니다. ${sessionTest}</span>
+		<span class="grp-noti red">* 그룹은 총 5개까지만 참여 가능합니다.</span>
 	</div>
 </div>
 			

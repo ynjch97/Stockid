@@ -32,7 +32,6 @@ public class UserController {
 		List<UsrGrpVO> myGrpList = userService.getMyGrpList(usrGrpVO);
 		try {
 			model.addAttribute("myGrpList", obj.writeValueAsString(myGrpList));
-			model.addAttribute("sessionTest", sessionUser);
 		} catch (JsonProcessingException e) {
 			e.printStackTrace();
 		}
@@ -40,7 +39,18 @@ public class UserController {
 	}
 
 	@RequestMapping(value = "/user/userInfo.do", method = {RequestMethod.POST, RequestMethod.GET}) 
-	public String userInfo(Model model) { 
+	public String userInfo(Model model, UsrGrpVO usrGrpVO, HttpSession httpSession) { 
+		SessionUser sessionUser = (SessionUser) httpSession.getAttribute(Consts.SessionAttr.USER);
+		if (sessionUser != null) usrGrpVO.setUsrNum( sessionUser.getUsrNum() );
+		
+		ObjectMapper obj = new ObjectMapper(); 
+		UsrGrpVO userInfo = userService.getUserInfo(usrGrpVO);
+		try {
+			model.addAttribute("userInfo", obj.writeValueAsString(userInfo));
+		} catch (JsonProcessingException e) {
+			e.printStackTrace();
+		}
+		
 		return "user/userInfo"; 
 	}
 

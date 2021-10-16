@@ -3,7 +3,7 @@
 <mapper namespace="com.eunjy.stockid.mapper.login.LoginMapper"> 
 
 	<!-- 회원 존재 유무 확인 조회 -->
-	<select id="countLoginId" parameterType="com.eunjy.stockid.domain.user.UsrGrpVO" resultType="Integer">
+	<select id="countLoginId" parameterType="UsrGrpVO" resultType="Integer">
  		/* LoginMapper.xml.countLoginId */
  		SELECT
  			COUNT(1)
@@ -13,7 +13,7 @@
  	</select>
  	
  	<!-- 로그인용 회원 조회 -->
- 	<select id="login" parameterType="com.eunjy.stockid.domain.user.UsrGrpVO" resultType="com.eunjy.stockid.domain.common.SessionUser">
+ 	<select id="login" parameterType="UsrGrpVO" resultType="com.eunjy.stockid.domain.common.SessionUser">
 		/* LoginMapper.xml.login */
 		SELECT
 			USR_NUM 
@@ -34,7 +34,7 @@
      </select>
  	
 	<!-- 회원가입 -->
-	<insert id="insertUsr" parameterType="com.eunjy.stockid.domain.user.UsrGrpVO"> 
+	<insert id="insertUsr" parameterType="UsrGrpVO"> 
 		/* LoginMapper.xml.insertUsr */
 		INSERT INTO USR_INFO (
 			USR_NUM

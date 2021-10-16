@@ -18,4 +18,8 @@ public class UserService {
 		return userMapper.getMyGrpList(usrGrpVO); 
 	}
 	
+	public UsrGrpVO getUserInfo(UsrGrpVO usrGrpVO) { 
+		return userMapper.getUserInfo(usrGrpVO); 
+	}
+	
 }

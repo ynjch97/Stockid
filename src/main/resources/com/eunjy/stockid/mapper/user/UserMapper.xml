@@ -2,7 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd"> 
 <mapper namespace="com.eunjy.stockid.mapper.user.UserMapper"> 
 	
-	<select id="getMyGrpList" parameterType="com.eunjy.stockid.domain.user.UsrGrpVO" resultType="com.eunjy.stockid.domain.user.UsrGrpVO"> 
+	<select id="getMyGrpList" parameterType="UsrGrpVO" resultType="UsrGrpVO"> 
 		/* UserMapper.xml.getMyGrpList */
 		SELECT
 			COUNT(1) OVER() AS TOTAL_CNT
@@ -28,6 +28,27 @@
 			AND R.MBR_DEL_YN = 'N'
 		    AND U.USR_NUM = #{usrNum}
 		ORDER BY R.REG_DT
+	</select>
+	
+	<select id="getUserInfo" parameterType="UsrGrpVO" resultType="UsrGrpVO"> 
+		/* UserMapper.xml.getUserInfo */
+		SELECT
+			USR_NUM
+			, USR_ID
+			, USR_PW
+			, USR_NM
+		    , USR_NICK
+			, USR_MOBILE
+		    , USR_EMAIL
+			, DFLT_GRP_NUM
+			, USE_YN
+			, REG_ID
+			, REG_DT
+			, MDFY_ID
+			, MDFY_DT
+		FROM USR_INFO
+		WHERE USE_YN = 'Y'
+		AND USR_NUM = #{usrNum}
 	</select>
 
 </mapper>

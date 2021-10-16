@@ -1,8 +1,11 @@
 package com.eunjy.stockid.domain.common;
 
+import org.apache.ibatis.type.Alias;
+
 import lombok.Data;
 
 @Data
+@Alias("SessionUser")
 public class SessionUser {
 
 	// Session 사용자 정보

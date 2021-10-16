@@ -1,10 +1,13 @@
 package com.eunjy.stockid.domain.user;
 
+import org.apache.ibatis.type.Alias;
+
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Data
 @NoArgsConstructor
+@Alias("UsrGrpVO")
 public class UsrGrpVO {
 
 	// 공통
