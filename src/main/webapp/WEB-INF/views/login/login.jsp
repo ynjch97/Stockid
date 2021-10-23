@@ -3,11 +3,11 @@
 
 <div class="login">
 	<div>
-		<form id="frm">
+		<form id="loginFrm" >
 			<img class="logo" src="../../image/common/logo.png" />
-			<p><input type="text" id="loginId" name="loginId" placeholder="아이디" maxlength="30" /></p>
-			<p><input type="password" id="loginPw" name="loginPw" placeholder="비밀번호" maxlength="30" /></p>
-			<button type="button" id="loginBtn" class="btn-login">로그인</button>
+			<p><input type="text" id="loginId" name="loginId" v-model="loginId" placeholder="아이디" maxlength="30" /></p>
+			<p><input type="password" id="loginPw" name="loginPw" v-model="loginPw" placeholder="비밀번호" maxlength="30" /></p>
+			<button type="button" class="btn-login" id="loginBtn" v-on:click="login">로그인</button>
 		</form>
 		<span class="join-wrap">
 			<a href="javascript:void(0);" id="joinBtn">회원가입 ></a>
@@ -17,17 +17,20 @@
 </div>
 
 <script type="text/javascript">
+
+	var loginFrmVm;
+	
 	$(document).ready(function () {
+		
+		setVueEvent(); 
 		
 		// 비밀번호 입력창에서 엔터 누를 시에도 로그인 실행
 		$("#loginPw").keypress(function( event ) {
 			if ( event.which == 13 ) {
-				login();				
+				loginFrmVm.login();				
 			}
 		});
-	
-	}).on("click","#loginBtn",function(){ // 로그인
-		login();
+
 	}).on("click","#joinBtn",function(){ // 회원가입
 		movePage("/login/join.do");
 	}).on("click","#findIdPw",function(){ // ID, PW 찾기
@@ -35,13 +38,32 @@
 	})
 	;
 	
+	// Vue.js 세팅
+	function setVueEvent() {
+		loginFrmVm = new Vue({ // 로그인
+			el: "#loginFrm",
+			data: {
+				loginId: null,
+				loginPw: null
+			},
+			methods: {
+				login: function(e) {
+					if (e) { // 메소드 호출의 경우 대비
+						e.preventDefault();
+					}
+					loginProcess(this);
+				}
+			}
+		});
+	}
+	
 	// 1. 로그인 유효성 체크
-	function loginChk() {
-		if ( isTrimEmpty($("#loginId").val()) ) {
+	function loginChk(obj) {
+		if ( isTrimEmpty( obj.loginId ) ) {
 			alert("아이디를 입력하세요");
 			$("#loginId").focus();
 			return false;
-		} else if ( isTrimEmpty($("#loginPw").val()) ) {
+		} else if ( isTrimEmpty( obj.loginPw ) ) {
 			alert("비밀번호를 입력하세요");
 			$("#loginPw").focus();
 			return false;
@@ -50,8 +72,8 @@
 	}
 	
 	// 2. 로그인
-	function login(isForce) {
-		if ( !loginChk() ) { // 로그인 유효성 체크
+	function loginProcess(obj, isForce) {
+		if ( !loginChk(obj) ) { // 로그인 유효성 체크
 			return;
 		}
 	
@@ -59,7 +81,7 @@
 			isForce = false;
 		}
 		
-		var formData = new FormData($('#frm')[0]);
+		var formData = new FormData($('#loginFrm')[0]);
 		formData.set( "isForce", isForce );
 		formData.set( "loginId", encodingBase64(formData.get("loginId")) );
 		formData.set( "loginPw", encodingBase64(formData.get("loginPw")) );
