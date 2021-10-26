@@ -6,8 +6,8 @@
 		<form id="loginFrm" >
 			<img class="logo" src="../../image/common/logo.png" />
 			<p><input type="text" id="loginId" name="loginId" v-model="loginId" placeholder="아이디" maxlength="30" /></p>
-			<p><input type="password" id="loginPw" name="loginPw" v-model="loginPw" placeholder="비밀번호" maxlength="30" /></p>
-			<button type="button" class="btn-login" id="loginBtn" v-on:click="login">로그인</button>
+			<p><input type="password" id="loginPw" name="loginPw" v-model="loginPw" @keyup.enter="login" placeholder="비밀번호" maxlength="30" /></p>
+			<button type="button" class="btn-login" id="loginBtn" @click="login">로그인</button>
 		</form>
 		<span class="join-wrap">
 			<a href="javascript:void(0);" id="joinBtn">회원가입 ></a>
@@ -22,15 +22,8 @@
 	
 	$(document).ready(function () {
 		
-		setVueEvent(); 
+		vueInit(); 
 		
-		// 비밀번호 입력창에서 엔터 누를 시에도 로그인 실행
-		$("#loginPw").keypress(function( event ) {
-			if ( event.which == 13 ) {
-				loginFrmVm.login();				
-			}
-		});
-
 	}).on("click","#joinBtn",function(){ // 회원가입
 		movePage("/login/join.do");
 	}).on("click","#findIdPw",function(){ // ID, PW 찾기
@@ -39,7 +32,7 @@
 	;
 	
 	// Vue.js 세팅
-	function setVueEvent() {
+	function vueInit() {
 		loginFrmVm = new Vue({ // 로그인
 			el: "#loginFrm",
 			data: {
@@ -47,11 +40,9 @@
 				loginPw: null
 			},
 			methods: {
-				login: function(e) {
-					if (e) { // 메소드 호출의 경우 대비
-						e.preventDefault();
-					}
-					loginProcess(this);
+				login: function(e) { // 비밀번호 입력창에서 엔터 누를 시에도 로그인 실행
+					e.preventDefault();
+					login(this);
 				}
 			}
 		});
@@ -72,7 +63,7 @@
 	}
 	
 	// 2. 로그인
-	function loginProcess(obj, isForce) {
+	function login(obj, isForce) {
 		if ( !loginChk(obj) ) { // 로그인 유효성 체크
 			return;
 		}

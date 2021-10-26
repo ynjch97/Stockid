@@ -48,7 +48,7 @@ public class PostController {
 		return "post/postList"; 
 	}
 	
-	@RequestMapping(value = "/write.do", method = RequestMethod.GET) 
+	@RequestMapping(value = "/write.do", method = {RequestMethod.POST, RequestMethod.GET}) 
 	public String postWrite(@PathVariable("grpUrl") String grpUrl, Model model) { 
 		log.debug("grpUrl : {}", grpUrl);
 		return "post/postWrite"; 
