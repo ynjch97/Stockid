@@ -24,7 +24,7 @@
 		
 		vueInit(); 
 		
-	}).on("click","#joinBtn",function(){ // 회원가입_민정Test
+	}).on("click","#joinBtn",function(){ // 회원가입_민정Test_윤지Test
 		movePage("/login/join.do");
 	}).on("click","#findIdPw",function(){ // ID, PW 찾기
 		window.location = "www.naver.com";
