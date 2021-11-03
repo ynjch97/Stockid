@@ -22,6 +22,8 @@
 </div>
 
 <script type="text/javascript">
+
+	var infoFrmVm;
 	var userInfo = ${userInfo};
 
 	$(document).ready(function () {
