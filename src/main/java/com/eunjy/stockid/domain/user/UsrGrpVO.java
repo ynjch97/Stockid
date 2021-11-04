@@ -10,6 +10,8 @@ import lombok.NoArgsConstructor;
 @Alias("UsrGrpVO")
 public class UsrGrpVO {
 
+	private int totalCnt;
+
 	// 공통
 	private String usrNum;
 	private String grpNum;

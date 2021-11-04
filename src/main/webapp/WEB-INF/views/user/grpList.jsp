@@ -21,7 +21,7 @@
 		</div>
 		<div class="btn-wrap">
 			<button class="btn-join-grp" :class="{ 'disabled': grpFull }">그룹 참여하기</button>
-			<button class="btn-crt-grp" :class="{ 'disabled': grpFull }">그룹 생성하기</button>
+			<button class="btn-crt-grp addGrp" :class="{ 'disabled': grpFull }">그룹 생성하기</button>
 		</div>
 		<span class="grp-noti" :class="{ 'red': grpFull }">* 그룹은 총 5개까지만 참여 가능합니다.</span>
 	</div>
@@ -42,6 +42,8 @@
 	}).on("click",".grpSetting",function(){ // 그룹 설정으로 이동
 		var grpNum = $(this).parent("li").data("grpNum");
 		goSetting(grpNum);
+	}).on("click",".addGrp",function(){ // 그룹 생성으로 이동
+		goAddGrp();
 	})
 	;
 	
@@ -82,7 +84,7 @@
 	
 	// 2. 개인정보 수정으로 이동
 	function goUserInfo() {
-		window.location = "/user/userInfo.do";
+		movePage("/user/userInfo.do");
 	}
 	
 	// 3. 해당 그룹 메인으로 이동
@@ -93,5 +95,10 @@
 	// 4. 해당 그룹 설정으로 이동
 	function goSetting(grpNum) {
 		alert("설정 : " + grpNum);
+	}
+	
+	// 5. 그룹 생성으로 이동 
+	function goAddGrp() {
+		movePage("/user/addGrp.do");
 	}
 </script>   

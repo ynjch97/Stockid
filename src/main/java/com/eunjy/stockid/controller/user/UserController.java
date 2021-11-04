@@ -18,12 +18,13 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 @Controller
+@RequestMapping(value = "/user")
 public class UserController {
 	
 	@Autowired
 	UserService userService; 
 
-	@RequestMapping(value = "/user/grpList.do", method = {RequestMethod.POST, RequestMethod.GET}) 
+	@RequestMapping(value = "/grpList.do", method = {RequestMethod.POST, RequestMethod.GET}) 
 	public String grpList(Model model, UsrGrpVO usrGrpVO, HttpSession httpSession) { 
 		SessionUser sessionUser = (SessionUser) httpSession.getAttribute(Consts.SessionAttr.USER);
 		if (sessionUser != null) usrGrpVO.setUsrNum( sessionUser.getUsrNum() );
@@ -37,8 +38,24 @@ public class UserController {
 		}
 		return "user/grpList"; 
 	}
+	
+	@RequestMapping(value = "/addGrp.do", method = {RequestMethod.POST, RequestMethod.GET}) 
+	public String addGrp(Model model, UsrGrpVO usrGrpVO, HttpSession httpSession) { 
+		SessionUser sessionUser = (SessionUser) httpSession.getAttribute(Consts.SessionAttr.USER);
+		if (sessionUser != null) usrGrpVO.setUsrNum( sessionUser.getUsrNum() );
+		
+		List<UsrGrpVO> myGrpList = userService.getMyGrpList(usrGrpVO);
+		int myGrpCnt = 0;
+		if (myGrpList.size() != 0) {
+			myGrpCnt = myGrpList.get(0).getTotalCnt();
+		}
+		
+		model.addAttribute("myGrpCnt", myGrpCnt);
+		
+		return "user/addGrp"; 
+	}
 
-	@RequestMapping(value = "/user/userInfo.do", method = {RequestMethod.POST, RequestMethod.GET}) 
+	@RequestMapping(value = "/userInfo.do", method = {RequestMethod.POST, RequestMethod.GET}) 
 	public String userInfo(Model model, UsrGrpVO usrGrpVO, HttpSession httpSession) { 
 		SessionUser sessionUser = (SessionUser) httpSession.getAttribute(Consts.SessionAttr.USER);
 		if (sessionUser != null) usrGrpVO.setUsrNum( sessionUser.getUsrNum() );
