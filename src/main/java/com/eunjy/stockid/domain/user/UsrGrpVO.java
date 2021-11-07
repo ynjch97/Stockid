@@ -31,6 +31,7 @@ public class UsrGrpVO {
 	private String grpNm;
 	private String grpUrl;
 	private String grpPtcpCd;
+	private String grpIntro;
 	private String grpExpln;
 	private String headUsrNum;
 	private String headUsrYn;

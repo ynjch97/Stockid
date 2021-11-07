@@ -5,7 +5,7 @@
 /*
 * area 
 */
-div.login {
+div.usr-grp {
 	position: absolute;
 	top: 50%; 
 	left: 50%;
@@ -16,48 +16,56 @@ div.login {
 /*
 * login
 */
-.login img.logo { width:90%; margin: 0 5% 5% 15px; }
-.login p { margin-bottom:10px; }
-.login input { width:100%; }
-.login .btn-login { display:block; width:100%; font-size:18px; font-weight:500; line-height:49px; border-radius:3px; background:#FFBB00; color:#333333; margin-bottom:10px; }
-.login .btn-login:hover, .btn-login:focus { background:#EDA900; }
-.login span.join-wrap a:first-child { float:left; margin-left:5px; }
-.login span.join-wrap a:last-child { float:right; display:inline-block; text-align:right; margin-right:7px; }
+.usr-grp img.logo { width:90%; margin: 0 5% 5% 15px; }
+.usr-grp p { margin-bottom:10px; }
+.usr-grp p.margin-2 { margin-bottom:2px; }
+.usr-grp input, .usr-grp textarea { width:100%; }
+.usr-grp .btn-login { display:block; width:100%; font-size:18px; font-weight:500; line-height:49px; border-radius:3px; background:#FFBB00; color:#333333; margin-bottom:10px; }
+.usr-grp .btn-login:hover, .btn-login:focus { background:#EDA900; }
+.usr-grp span.join-wrap a:first-child { float:left; margin-left:5px; }
+.usr-grp span.join-wrap a:last-child { float:right; display:inline-block; text-align:right; margin-right:7px; }
 
 /*
 * join
 */
-.login span.pw-noti { width:100%; display: inline-block; text-align:left; font-size:12px; color:#00E; margin:0 0 10px 10px; }
-.login span.pw-noti:after { content:'* 비밀번호 일치' }
-.login span.pw-noti.red { color:#E00; }
-.login span.pw-noti.red:after { content:'* 비밀번호 불일치' }
-.login .btn-join { display:block; width:100%; font-size:16px; font-weight:500; line-height:40px; border-radius:3px; background:#FFBB00; color:#333333; margin-bottom:10px; }
-.login .btn-join:hover, .btn-join:focus { background:#EDA900; }
-.login .save-wrap { display:block; }
-.login .save-wrap .btn-half { display:inline-block; width:195px; }
-.login .save-wrap .btn-half:first-child { margin-right:5px; float:left; }
-.login .save-wrap .btn-half:last-child { float:right; }
+.usr-grp span.pw-noti { width:100%; display: inline-block; text-align:left; font-size:12px; color:#00E; margin:0 0 10px 10px; }
+.usr-grp span.pw-noti:after { content:'* 비밀번호 일치' }
+.usr-grp span.pw-noti.red { color:#E00; }
+.usr-grp span.pw-noti.red:after { content:'* 비밀번호 불일치' }
+.usr-grp .btn-join { display:block; width:100%; font-size:16px; font-weight:500; line-height:40px; border-radius:3px; background:#FFBB00; color:#333333; margin-bottom:10px; }
+.usr-grp .btn-join:hover, .btn-join:focus { background:#EDA900; }
+.usr-grp .save-wrap { display:block; }
+.usr-grp .save-wrap .btn-half { display:inline-block; width:195px; }
+.usr-grp .save-wrap .btn-half:first-child { margin-right:5px; float:left; }
+.usr-grp .save-wrap .btn-half:last-child { float:right; }
 
 /*
 * group select
 */
-.login .tit-wrap { vertical-align:center; min-height:50px; } 
-.login .tit-wrap span:first-child { float:left; font-size:14px; font-weight:500; }
-.login .tit-wrap span:last-child { float:right; display:inline-block; text-align:right; margin-right:7px; font-size:12px; }
-.login .tit-wrap span:last-child:hover, .login .tit-wrap span:last-child:focus { cursor:pointer; }
-.login .no-grp-wrap { padding-bottom:20px; }
-.login .no-grp-wrap p { font-size:18px; font-weight:500; width:100%; text-align:center; }
-.login .grp-wrap { border-bottom:1px solid #DFDFDF; padding-bottom:20px; }
-.login .grp-wrap > ul > li { font-size:18px; font-weight:500; line-height:40px; }
+.usr-grp .tit-wrap { vertical-align:center; min-height:50px; } 
+.usr-grp .tit-wrap span:first-child { float:left; font-size:14px; font-weight:500; }
+.usr-grp .tit-wrap span:last-child { float:right; display:inline-block; text-align:right; margin-right:7px; font-size:12px; }
+.usr-grp .tit-wrap span:last-child:hover, .usr-grp .tit-wrap span:last-child:focus { cursor:pointer; }
+.usr-grp .no-grp-wrap { padding-bottom:20px; }
+.usr-grp .no-grp-wrap p { font-size:18px; font-weight:500; width:100%; text-align:center; }
+.usr-grp .grp-wrap { border-bottom:1px solid #DFDFDF; padding-bottom:20px; }
+.usr-grp .grp-wrap > ul > li { font-size:18px; font-weight:500; line-height:40px; }
 /*background-position:center; background-repeat:no-repeat ; background-image:url(../image/common/setting.png); background-size:50%;*/
-.login .grp-wrap > ul > li > .grpMain { display: inline-block; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; width: 360px; }
-.login .grp-wrap > ul > li > .grpMain:hover, .login .grp-wrap > ul > li > .grpMain:focus { color:#E00; cursor:pointer; }
-.login .grp-wrap > ul > li > .grpSetting { float:right; display:inline-block; text-align:right; width:40px; color:#00000000; background:center/15px no-repeat url(../image/common/setting.png); }
-.login .grp-wrap > ul > li > .grpSetting:hover, .login .grp-wrap > ul > li > .grpSetting:focus { cursor:pointer; }
-.login .btn-wrap { margin:20px 0 0 0; }
-.login .btn-crt-grp { display:block; width:100%; font-size:16px; font-weight:500; line-height:49px; border-radius:3px; background:#FFBB00; color:#333333; margin-bottom:10px; }
-.login .btn-crt-grp:hover, .btn-crt-grp:focus { background:#EDA900; }
-.login .btn-join-grp { display:block; width:100%; font-size:16px; font-weight:500; line-height:49px; border-radius:3px; background:#FFBB00; color:#333333; margin-bottom:10px; }
-.login .btn-join-grp:hover, .btn-join-grp:focus { background:#EDA900; }
-.login span.grp-noti { width:100%; display: inline-block; text-align:center;}
-.login span.grp-noti.red { color:#E00; margin-top:5px; }
+.usr-grp .grp-wrap > ul > li > .grpMain { display: inline-block; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; width: 360px; }
+.usr-grp .grp-wrap > ul > li > .grpMain:hover, .usr-grp .grp-wrap > ul > li > .grpMain:focus { color:#E00; cursor:pointer; }
+.usr-grp .grp-wrap > ul > li > .grpSetting { float:right; display:inline-block; text-align:right; width:40px; color:#00000000; background:center/15px no-repeat url(../image/common/setting.png); }
+.usr-grp .grp-wrap > ul > li > .grpSetting:hover, .usr-grp .grp-wrap > ul > li > .grpSetting:focus { cursor:pointer; }
+.usr-grp .btn-wrap { margin:20px 0 0 0; }
+.usr-grp .btn-crt-grp { display:block; width:100%; font-size:16px; font-weight:500; line-height:49px; border-radius:3px; background:#FFBB00; color:#333333; margin-bottom:10px; }
+.usr-grp .btn-crt-grp:hover, .btn-crt-grp:focus { background:#EDA900; }
+.usr-grp .btn-join-grp { display:block; width:100%; font-size:16px; font-weight:500; line-height:49px; border-radius:3px; background:#FFBB00; color:#333333; margin-bottom:10px; }
+.usr-grp .btn-join-grp:hover, .btn-join-grp:focus { background:#EDA900; }
+.usr-grp span.grp-noti { width:100%; display: inline-block; text-align:center;}
+.usr-grp span.grp-noti.red { color:#E00; }
+
+/*
+* group add
+*/
+.usr-grp span.url-noti { width:100%; display: inline-block; text-align:left; font-size:12px; margin:0 0 10px 10px; }
+.usr-grp span.url-noti:before { content:'* ' }
+.usr-grp span.url-noti span { color:#00E; font-weight:500; }

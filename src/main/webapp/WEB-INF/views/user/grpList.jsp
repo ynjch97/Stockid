@@ -3,7 +3,7 @@
 <!DOCTYPE html>
 <c:set var="sessionUser" value="${sessionScope.session_user}" />
 
-<div class="login" id="loginDiv">
+<div class="usr-grp" id="grpDiv">
 	<div>
 		<div class="tit-wrap">
 			<span v-if="grpExist">그룹 목록</span>
@@ -29,7 +29,7 @@
 			
 <script type="text/javascript">
 
-	var loginDivVm;
+	var grpDivVm;
 	var grpList = ${myGrpList};
 
 	$(document).ready(function(){
@@ -51,8 +51,8 @@
 	function vueInit() {
 		var grpCnt = grpList.length;
 	
-		loginDivVm = new Vue({ // 로그인
-			el: "#loginDiv",
+		grpDivVm = new Vue({ 
+			el: "#grpDiv",
 			data: {
 				// 그룹 개수에 따른 버튼 활성화 (그룹이 5개일 경우 참여, 생성 버튼 비활성화)
 				grpFull: (grpCnt >= 5), 
