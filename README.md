@@ -3,7 +3,7 @@ Stock + Kid, 주린이들을 위한 주식 정보 공유 사이트
 
 [로그인 구현 정보](https://github.com/ynjch97/Stockid/wiki/Login-%EA%B8%B0%EB%8A%A5-%EA%B5%AC%ED%98%84-%EC%A0%95%EB%B3%B4)
 
-## 21년 5월 
+### 21년 5월 
 - url 패턴 재정의 -> [그룹url]/main.do [그룹url]/list.do [그룹url]/write.do  
 - SiteMesh 설정  
 - css 수정 : favicon 및 logo 작업, header 디자인, css 파일 용도별 세분화  
