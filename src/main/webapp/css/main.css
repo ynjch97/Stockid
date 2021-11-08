@@ -182,8 +182,12 @@ button {
 	cursor:pointer;
 	vertical-align:top;
 }
+
+label.radio { display:inline-block; }
+label.radio:not(:last-child) { margin-right:5px; }
 input[type="checkbox"] { width:21px; height:21px; margin:0; }
-input[type="radio"] { width:21px; height:21px; margin:0; }
+input[type="radio"] { width:21px !important; height:21px !important; margin:0 5px 0 0; }
+
 textarea, pre {
 	overflow:auto;
 	resize:none;

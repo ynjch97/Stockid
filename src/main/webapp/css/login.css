@@ -14,12 +14,21 @@ div.usr-grp {
 }
 
 /*
-* login
+* common
 */
 .usr-grp img.logo { width:90%; margin: 0 5% 5% 15px; }
 .usr-grp p { margin-bottom:10px; }
+.usr-grp p { display: flex; /* align-items: center; */ }
 .usr-grp p.margin-2 { margin-bottom:2px; }
+.usr-grp p .input-span { margin:5px auto 0 0; font-weight:500; width:100px; }
+.usr-grp p .radio-span { margin:0 auto 0 0; font-weight:500; width:100px; }
+.usr-grp p * { margin-left:auto; }
+.usr-grp p .radio:last-child { margin-right:5px; }
 .usr-grp input, .usr-grp textarea { width:100%; }
+
+/*
+* login
+*/
 .usr-grp .btn-login { display:block; width:100%; font-size:18px; font-weight:500; line-height:49px; border-radius:3px; background:#FFBB00; color:#333333; margin-bottom:10px; }
 .usr-grp .btn-login:hover, .btn-login:focus { background:#EDA900; }
 .usr-grp span.join-wrap a:first-child { float:left; margin-left:5px; }
@@ -66,6 +75,6 @@ div.usr-grp {
 /*
 * group add
 */
-.usr-grp span.url-noti { width:100%; display: inline-block; text-align:left; font-size:12px; margin:0 0 10px 10px; }
+.usr-grp span.url-noti { display:inline-block; text-align:left; font-size:12px; }
 .usr-grp span.url-noti:before { content:'* ' }
 .usr-grp span.url-noti span { color:#00E; font-weight:500; }
