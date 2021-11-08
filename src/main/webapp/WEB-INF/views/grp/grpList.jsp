@@ -99,6 +99,6 @@
 	
 	// 5. 그룹 생성으로 이동 
 	function goAddGrp() {
-		movePage("/user/addGrp.do");
+		movePage("/grp/addGrp.do");
 	}
 </script>   

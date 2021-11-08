@@ -6,16 +6,16 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.eunjy.stockid.domain.user.UsrGrpVO;
-import com.eunjy.stockid.mapper.user.UserMapper;
+import com.eunjy.stockid.mapper.user.GrpMapper;
 
 @Service
-public class UserService {
+public class GrpService {
 
 	@Autowired
-	private UserMapper userMapper;
+	private GrpMapper grpMapper;
 	
-	public UsrGrpVO getUserInfo(UsrGrpVO usrGrpVO) { 
-		return userMapper.getUserInfo(usrGrpVO); 
+	public List<UsrGrpVO> getMyGrpList(UsrGrpVO usrGrpVO) { 
+		return grpMapper.getMyGrpList(usrGrpVO); 
 	}
 	
 }

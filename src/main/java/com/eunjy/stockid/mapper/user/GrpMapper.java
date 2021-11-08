@@ -7,8 +7,8 @@ import org.apache.ibatis.annotations.Mapper;
 import com.eunjy.stockid.domain.user.UsrGrpVO;
 
 @Mapper
-public interface UserMapper {
+public interface GrpMapper {
 	
-	public UsrGrpVO getUserInfo(UsrGrpVO usrGrpVO);
-
+	public List<UsrGrpVO> getMyGrpList(UsrGrpVO usrGrpVO);
+	
 }
