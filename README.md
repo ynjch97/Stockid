@@ -34,6 +34,7 @@ Stock + Kid, 주린이들을 위한 주식 정보 공유 사이트
 
 ### 21년 11월
 - Java 11 버전 업그레이드
-- css 수정 : input box 와 span 사이 거리 조정, textarea 디자인
+- css 수정 : input box 와 span 사이 거리 조정, textarea 디자인, usr-grp 폼 항목명 영역 추가, 라디오 버튼
 - 화면 추가 : 그룹 생성
 - 화면 수정 : 그룹 선택 화면에 Vue.js 적용
+- LoginInterceptor 수정 (redirectPage 관련 부분 오류 수정)
