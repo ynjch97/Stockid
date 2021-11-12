@@ -16,7 +16,8 @@ public class UsrGrpVO {
 	private String usrNum;
 	private String grpNum;
 	private String rltnNum;
-	
+	private int intGrpNum;
+		
 	// 사용자
 	private String usrId;
 	private String usrPw;

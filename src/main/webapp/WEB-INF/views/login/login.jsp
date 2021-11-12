@@ -108,7 +108,6 @@
 			},
 			error : function(e) {
 				console.log(e.responseText.trim());
-				viewLayer(e.responseText.trim());
 			}
 		});
 	}

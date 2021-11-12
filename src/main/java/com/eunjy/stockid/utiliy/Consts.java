@@ -77,4 +77,25 @@ public class Consts {
 		public static final String INVEST_STOCK = "stock";
 	}
 	
+	/**
+	 *  회원 유형 정보
+	 *
+	 * <PRE>
+	 * 1. ClassName: UsrType
+	 * 2. FileName : Consts.java
+	 * 3. 작성자   : ynjch97
+	 * 4. 작성일   : 2021.11.13.
+	 * 5. 변경이력
+	 *		이름			일자				변경내용
+	 *     ———————————————————————————————————————————
+	 *		ynjch97		2021.11.13.		신규 개발
+	 * </PRE>
+	 */
+	public abstract static class UsrType {
+		/** 투자 유형 정보 */
+		public static final String MASTER = "01";
+		public static final String SUB_MASTER = "02";
+		public static final String GENERAL = "03";
+	}
+	
 }

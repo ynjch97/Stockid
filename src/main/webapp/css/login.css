@@ -56,7 +56,7 @@ div.usr-grp {
 .usr-grp .tit-wrap span:last-child { float:right; display:inline-block; text-align:right; margin-right:7px; font-size:12px; }
 .usr-grp .tit-wrap span:last-child:hover, .usr-grp .tit-wrap span:last-child:focus { cursor:pointer; }
 .usr-grp .no-grp-wrap { padding-bottom:20px; }
-.usr-grp .no-grp-wrap p { font-size:18px; font-weight:500; width:100%; text-align:center; }
+.usr-grp .no-grp-wrap p { font-size:18px; font-weight:500; width:100%; text-align:center; display:flex; flex-direction:column; align-items:center; }
 .usr-grp .grp-wrap { border-bottom:1px solid #DFDFDF; padding-bottom:20px; }
 .usr-grp .grp-wrap > ul > li { font-size:18px; font-weight:500; line-height:40px; }
 /*background-position:center; background-repeat:no-repeat ; background-image:url(../image/common/setting.png); background-size:50%;*/

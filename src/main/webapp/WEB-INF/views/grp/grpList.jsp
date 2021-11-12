@@ -16,7 +16,7 @@
 		</div>
 		<div class="no-grp-wrap" v-else>
 			<p>가입된 그룹이 없습니다.</p>
-			<p>${sessionUser.usrNick}님의 그룹을 생성하거나</p>
+			<p>${sessionUser.usrNick} 님의 그룹을 생성하거나</p>
 			<p>초대 코드를 입력해 가입해보세요.</p>
 		</div>
 		<div class="btn-wrap">
@@ -30,7 +30,8 @@
 <script type="text/javascript">
 
 	var grpDivVm;
-	var grpList = ${myGrpList};
+	const grpList = ${myGrpList};
+	const grpCnt = grpList.length;
 
 	$(document).ready(function(){
 		vueInit();
@@ -49,8 +50,6 @@
 	
 	// 1. Vue.js 데이터 세팅
 	function vueInit() {
-		var grpCnt = grpList.length;
-	
 		grpDivVm = new Vue({ 
 			el: "#grpDiv",
 			data: {
@@ -99,6 +98,10 @@
 	
 	// 5. 그룹 생성으로 이동 
 	function goAddGrp() {
-		movePage("/grp/addGrp.do");
+		if (grpCnt >= 5) {
+			alert("그룹은 총 5개까지만 참여 가능합니다.\r\n이전 페이지로 이동합니다.");
+		} else {
+			movePage("/grp/addGrp.do");
+		}
 	}
 </script>   

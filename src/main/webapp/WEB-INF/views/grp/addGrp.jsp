@@ -39,12 +39,44 @@
 <script type="text/javascript">
 
 	var addFrmVm;
-	var myGrpCnt = "${myGrpCnt}";
+	var myGrpCnt = Number("${myGrpCnt}");
 
 	$(document).ready(function () {
-		if (myGrpCnt >= 5) {
-		}
+		chkMyGrpCnt();
 	})
 	;
-	
+
+	// 그룹 개수 체크
+	function chkMyGrpCnt() {
+		if (myGrpCnt >= 5) {
+			alert("그룹은 총 5개까지만 참여 가능합니다.\r\n이전 페이지로 이동합니다.");
+			history.back();
+		}
+	}
+	 	
+	// 그룹 생성
+	function addGrp() {
+		var formData = new FormData($('#addFrm')[0]);
+		
+		$.ajax({
+			type: "POST",
+			enctype: 'multipart/form-data',
+			url : '/grp/ajax.addGrpProcess.do',
+			data : formData,
+			processData: false, // 내부적으로 query string 만드는 것 방지
+			contentType: false,
+			cache: false,
+			timeout: 600000,
+			success : function(data) {
+				if (data.isSuccess) {
+					alert("성공");
+				} else {
+					alert("성공");
+				}
+			},
+			error : function(e) {
+				console.log(e.responseText.trim());
+			}
+		});
+	}
 </script>

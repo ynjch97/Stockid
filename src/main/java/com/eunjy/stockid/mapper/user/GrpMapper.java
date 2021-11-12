@@ -10,5 +10,8 @@ import com.eunjy.stockid.domain.user.UsrGrpVO;
 public interface GrpMapper {
 	
 	public List<UsrGrpVO> getMyGrpList(UsrGrpVO usrGrpVO);
+
+	public int insertGrp(UsrGrpVO usrGrpVO);
+	public int insertGrpRltn(UsrGrpVO usrGrpVO);
 	
 }
