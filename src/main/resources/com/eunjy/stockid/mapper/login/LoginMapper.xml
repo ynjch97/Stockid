@@ -66,5 +66,19 @@
 		    , NOW()
 		)
 	</insert>
+	
+	<!-- 회원정보 수정 -->
+	<update id="updateUsr" parameterType="UsrGrpVO"> 
+		/* LoginMapper.xml.updateUsr */
+		Update usr_info
+		Set
+			USR_PW = #{usrPw},
+			USR_NM = #{usrNm},
+			USR_NICK = #{usrNick},
+			USR_MOBILE = #{usrMobile},
+			USR_EMAIL = #{usrEmail}
+		Where 1 = 1
+		And USR_ID = #{usrId}
+	</update>
 
 </mapper>

@@ -1,7 +1,5 @@
 package com.eunjy.stockid.mapper.login;
 
-import java.util.List;
-
 import org.apache.ibatis.annotations.Mapper;
 
 import com.eunjy.stockid.domain.common.SessionUser;
@@ -18,5 +16,8 @@ public interface LoginMapper {
 	
 	// 회원가입
 	public int insertUsr(UsrGrpVO usrGrpVO);
+
+	// 회원정보 수정
+	public int updateUsr(UsrGrpVO usrGrpVO);
 
 }

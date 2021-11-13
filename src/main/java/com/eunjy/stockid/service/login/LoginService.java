@@ -1,13 +1,10 @@
 package com.eunjy.stockid.service.login;
 
 import java.security.NoSuchAlgorithmException;
-import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
@@ -109,6 +106,15 @@ public class LoginService {
 	}
 	
 	/**
+	 * 회원정보 수정
+	 * @param UsrGrpVO
+	 * @return int
+	 */
+	public int updateUsr(UsrGrpVO usrGrpVO) { 
+		return loginMapper.updateUsr(usrGrpVO);  
+	}
+	
+	/**
 	 * SHA-256 방식 암호화
 	 * @param UsrGrpVO
 	 * @return int
@@ -125,6 +131,5 @@ public class LoginService {
         }
         
         return encrypted;
-	}
-	
+	}	
 }
