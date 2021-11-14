@@ -97,6 +97,20 @@ function isValidUrl(str) {
 	}
 }
 
+// 공배 + 영문 + 숫자 제거 리턴
+function returnStrWithout(str, type) {
+	if ( isEmpty(str) ) return;
+
+	if (type == "space") {
+		str = str.replace(/ /g, "");
+	} else if (type == "numEng") {
+		str = str.replace(/[^a-zA-Z0-9]/gi, '');
+	}
+	
+	return str;
+}
+
+
 /*
 * 쿠키 관련
 */ 
