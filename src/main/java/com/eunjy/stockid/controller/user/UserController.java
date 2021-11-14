@@ -47,7 +47,7 @@ public class UserController {
 		return "user/userInfo"; 
 	}
 	
-	@RequestMapping(value = "/user/changeUserInfo.do", method = RequestMethod.POST) 
+	@RequestMapping(value = "/changeUserInfo.do", method = RequestMethod.POST) 
 	public @ResponseBody ResultVo changeUserInfo(Model model, UsrGrpVO usrGrpVO) { 
 		int result = 0;
 		
