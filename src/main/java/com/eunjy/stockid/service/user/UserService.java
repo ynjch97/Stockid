@@ -14,10 +14,6 @@ public class UserService {
 	@Autowired
 	private UserMapper userMapper;
 	
-	public List<UsrGrpVO> getMyGrpList(UsrGrpVO usrGrpVO) { 
-		return userMapper.getMyGrpList(usrGrpVO); 
-	}
-	
 	public UsrGrpVO getUserInfo(UsrGrpVO usrGrpVO) { 
 		return userMapper.getUserInfo(usrGrpVO); 
 	}

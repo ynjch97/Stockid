@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <!DOCTYPE html>
 
-<div class="login">
+<div class="usr-grp">
 	<div>
 		<form id="frm">
 			<img class="logo" src="../../image/common/logo.png" />
@@ -21,6 +21,7 @@
 <script type="text/javascript">
 	$(document).ready(function () {
 	}).on("keyup","#usrPw, #usrPwChk",function(){ // 비밀번호, 비밀번호 확인 일치 여부 확인
+		$(".pw-noti").prev().addClass("margin-2");
 		$(".pw-noti").removeClass("hide");
 		var isEqual = compareStr( $("#usrPw").val(),$("#usrPwChk").val() ); // 일치 여부 확인
 		if (!isEqual) {

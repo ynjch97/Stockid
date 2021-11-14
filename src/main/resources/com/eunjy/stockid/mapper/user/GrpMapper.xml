@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8"?> 
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd"> 
+<mapper namespace="com.eunjy.stockid.mapper.user.GrpMapper"> 
+	
+	<!-- 나의 그룹 목록 조회 -->
+	<select id="getMyGrpList" parameterType="UsrGrpVO" resultType="UsrGrpVO"> 
+		/* GrpMapper.xml.getMyGrpList */
+		SELECT
+			COUNT(1) OVER() AS TOTAL_CNT
+			, G.GRP_NUM
+		    , G.GRP_NM
+    		, GRP_URL
+			, R.USR_TYPE
+		    , GET_CODE_NAME('USR_TYPE', R.USR_TYPE) AS USR_TYPE_NM /*나의 회원 유형*/
+		    , G.OPEN_YN
+			, U.USR_NUM
+			, U.USR_ID
+		    , U.USR_NM
+		    , CASE WHEN R.USR_NICK IS NOT NULL THEN R.USR_NICK ELSE U.USR_NICK END AS USR_NICK
+		    , U.DFLT_GRP_NUM
+		FROM USR_INFO U
+		LEFT OUTER JOIN USR_GRP_RLTN R
+			ON U.USR_NUM = R.USR_NUM
+		INNER JOIN GRP_INFO G
+			ON G.GRP_NUM = R.GRP_NUM
+		WHERE G.USE_YN = 'Y'
+			AND R.MBR_APRV_YN = 'Y'
+			AND R.HEAD_APRV_YN = 'Y'
+			AND R.MBR_DEL_YN = 'N'
+		    AND U.USR_NUM = #{usrNum}
+		ORDER BY R.REG_DT
+	</select>
+ 	
+	<!-- 그룹 생성 -->
+	<insert id="insertGrp" parameterType="UsrGrpVO"> 
+		<selectKey resultType="int" keyProperty="intGrpNum" order="AFTER">
+			SELECT LAST_INSERT_ID()
+		</selectKey>
+		/* GrpMapper.xml.insertGrp */
+		INSERT INTO GRP_INFO (
+			GRP_NM
+			, GRP_URL
+			, GRP_PTCP_CD
+			, GRP_INTRO
+			, GRP_EXPLN
+			, HEAD_USR_NUM
+			, SUB_USR_NUM
+			, OPEN_YN
+			, USE_YN
+			, REG_ID
+			, REG_DT
+			, MDFY_ID
+			, MDFY_DT
+		) VALUES (
+			#{grpNm}
+		    , #{grpUrl}
+		    , #{grpPtcpCd}
+		    , #{grpIntro}
+		    , #{grpExpln}
+		    , #{usrNum}
+		    , NULL
+		    , #{openYn}
+		    , 'Y'
+		    , #{usrId}
+		    , NOW()
+		    , #{usrId}
+		    , NOW()
+		)
+	</insert>
+ 	
+	<!-- 멤버 추가 -->
+	<insert id="insertGrpRltn" parameterType="UsrGrpVO"> 
+		/* GrpMapper.xml.insertGrpRltn */
+		INSERT INTO USR_GRP_RLTN (
+			USR_NUM
+			, GRP_NUM
+			, USR_TYPE
+			, USR_NICK
+			, HEAD_APRV_YN
+			, MBR_APRV_YN
+			, MBR_DEL_YN
+			, MBR_DEL_DT
+			, REG_ID
+			, REG_DT
+			, MDFY_ID
+			, MDFY_DT
+		) VALUES (
+			#{usrNum}
+		    , #{grpNum}
+		    , #{usrType}
+		    , NULL
+		    , 'Y'
+		    , 'Y'
+		    , 'N'
+		    , NULL
+		    , #{usrId}
+		    , NOW()
+		    , #{usrId}
+		    , NOW()
+		)
+	</insert>
+	
+</mapper>

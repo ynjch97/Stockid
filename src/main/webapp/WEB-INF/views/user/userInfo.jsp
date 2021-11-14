@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <!DOCTYPE html>
 
-<div class="login">
+<div class="usr-grp">
 	<div>
 		<form id="infoFrm">
 			<img class="logo" src="../../image/common/logo.png" />
@@ -22,6 +22,8 @@
 </div>
 
 <script type="text/javascript">
+
+	var infoFrmVm;
 	var userInfo = ${userInfo};
 
 	$(document).ready(function () {

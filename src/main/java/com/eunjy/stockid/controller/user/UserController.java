@@ -1,7 +1,5 @@
 package com.eunjy.stockid.controller.user;
 
-import java.util.List;
-
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,6 +23,7 @@ import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
 @Controller
+@RequestMapping(value = "/user")
 public class UserController {
 	
 	@Autowired
@@ -32,22 +31,7 @@ public class UserController {
 	@Autowired
 	LoginService loginService;
 
-	@RequestMapping(value = "/user/grpList.do", method = {RequestMethod.POST, RequestMethod.GET}) 
-	public String grpList(Model model, UsrGrpVO usrGrpVO, HttpSession httpSession) { 
-		SessionUser sessionUser = (SessionUser) httpSession.getAttribute(Consts.SessionAttr.USER);
-		if (sessionUser != null) usrGrpVO.setUsrNum( sessionUser.getUsrNum() );
-		
-		ObjectMapper obj = new ObjectMapper(); 
-		List<UsrGrpVO> myGrpList = userService.getMyGrpList(usrGrpVO);
-		try {
-			model.addAttribute("myGrpList", obj.writeValueAsString(myGrpList));
-		} catch (JsonProcessingException e) {
-			e.printStackTrace();
-		}
-		return "user/grpList"; 
-	}
-
-	@RequestMapping(value = "/user/userInfo.do", method = {RequestMethod.POST, RequestMethod.GET}) 
+	@RequestMapping(value = "/userInfo.do", method = {RequestMethod.POST, RequestMethod.GET}) 
 	public String userInfo(Model model, UsrGrpVO usrGrpVO, HttpSession httpSession) { 
 		SessionUser sessionUser = (SessionUser) httpSession.getAttribute(Consts.SessionAttr.USER);
 		if (sessionUser != null) usrGrpVO.setUsrNum( sessionUser.getUsrNum() );

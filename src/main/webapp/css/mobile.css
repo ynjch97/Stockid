@@ -17,8 +17,8 @@
 	div.container {
 		height: 93%;
 	}
-	div.login {
-		width: 70%;
+	div.usr-grp {
+		width: 90%;
 	}
 }
 
@@ -38,6 +38,6 @@
 * login & group select (mobile)
 */
 @media (max-width:600px) { 
-	.login .grp-wrap > ul > li > span:first-child { max-width:90%;  }
-	.login .grp-wrap > ul > li > span:last-child { width:10%; }
+	.usr-grp .grp-wrap > ul > li > span:first-child { max-width:90%;  }
+	.usr-grp .grp-wrap > ul > li > span:last-child { width:10%; }
 }

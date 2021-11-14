@@ -10,11 +10,14 @@ import lombok.NoArgsConstructor;
 @Alias("UsrGrpVO")
 public class UsrGrpVO {
 
+	private int totalCnt;
+
 	// 공통
 	private String usrNum;
 	private String grpNum;
 	private String rltnNum;
-	
+	private int intGrpNum;
+		
 	// 사용자
 	private String usrId;
 	private String usrPw;
@@ -29,6 +32,7 @@ public class UsrGrpVO {
 	private String grpNm;
 	private String grpUrl;
 	private String grpPtcpCd;
+	private String grpIntro;
 	private String grpExpln;
 	private String headUsrNum;
 	private String headUsrYn;

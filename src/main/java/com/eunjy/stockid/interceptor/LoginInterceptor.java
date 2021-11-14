@@ -40,11 +40,12 @@ public class LoginInterceptor extends HandlerInterceptorAdapter {
 		
 		log.debug("==================== BEGIN ====================");
 		log.debug("Request URI ===> " + request.getRequestURI());
-		// log.debug("redirectPage ===> " + tests.get(0).get("name"));
 		
 		// uri 주소 정보
+		StringBuffer requestUrl = request.getRequestURL();
 		String requestUri = request.getRequestURI();
 		String[] requestArr = requestUri.split("/");
+		redirectPage = requestUrl.substring( 0, requestUrl.indexOf(requestUri) );
 
 		// 세선 사용자 정보
 		String usrId = "";
