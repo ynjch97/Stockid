@@ -23,7 +23,7 @@
 	}).on("keyup","#usrPw, #usrPwChk",function(){ // 비밀번호, 비밀번호 확인 일치 여부 확인
 		$(".pw-noti").prev().addClass("margin-2");
 		$(".pw-noti").removeClass("hide");
-		var isEqual = compareStr( $("#usrPw").val(),$("#usrPwChk").val() ); // 일치 여부 확인
+		var isEqual = compareStr( $("#usrPw").val(),$("#usrPwChk").val() ); // 일치 여부 확인2
 		if (!isEqual) {
 			$(".pw-noti").addClass("red");
 		} else {
