@@ -66,7 +66,7 @@
 							success: function (data) {
 								if (data.isSuccess) {
 									alert(data.resultMsg);
-									movePage("/user/grpList.do");
+									movePage("/grp/grpList.do");
 								} else {
 									alert(data.resultMsg);
 								}
