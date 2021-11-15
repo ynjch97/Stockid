@@ -20,7 +20,7 @@
 			<p>초대 코드를 입력해 가입해보세요.</p>
 		</div>
 		<div class="btn-wrap">
-			<button class="btn-join-grp" :class="{ 'disabled': grpFull }">그룹 참여하기</button>
+			<button class="btn-join-grp joinGrp" :class="{ 'disabled': grpFull }">그룹 참여하기</button>
 			<button class="btn-crt-grp addGrp" :class="{ 'disabled': grpFull }">그룹 생성하기</button>
 		</div>
 		<span class="grp-noti" :class="{ 'red': grpFull }">* 그룹은 총 5개까지만 참여 가능합니다.</span>
@@ -43,6 +43,8 @@
 	}).on("click",".grpSetting",function(){ // 그룹 설정으로 이동
 		var grpNum = $(this).parent("li").data("grpNum");
 		goSetting(grpNum);
+	}).on("click",".joinGrp",function(){ // 그룹 참여로 이동
+		goJoinGrp();
 	}).on("click",".addGrp",function(){ // 그룹 생성으로 이동
 		goAddGrp();
 	})
@@ -96,10 +98,19 @@
 		alert("설정 : " + grpNum);
 	}
 	
-	// 5. 그룹 생성으로 이동 
+	// 5. 그룹 참여로 이동 
+	function goJoinGrp() {
+		if (grpCnt >= 5) {
+			alert("그룹은 총 5개까지만 참여 가능합니다.");
+		} else {
+			movePage("/grp/joinGrp.do");
+		}
+	}
+	
+	// 6. 그룹 생성으로 이동 
 	function goAddGrp() {
 		if (grpCnt >= 5) {
-			alert("그룹은 총 5개까지만 참여 가능합니다.\r\n이전 페이지로 이동합니다.");
+			alert("그룹은 총 5개까지만 참여 가능합니다.");
 		} else {
 			movePage("/grp/addGrp.do");
 		}
