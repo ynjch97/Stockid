@@ -20,6 +20,7 @@ div.usr-grp {
 .usr-grp p { margin-bottom:10px; }
 .usr-grp p { display: flex; /* align-items: center; */ }
 .usr-grp p.margin-2 { margin-bottom:2px; }
+.usr-grp p.margin-0 { margin-bottom:0px; }
 .usr-grp p .input-span { margin:5px auto 0 0; font-weight:500; width:100px; }
 .usr-grp p .radio-span { margin:0 auto 0 0; font-weight:500; width:100px; }
 .usr-grp p * { margin-left:auto; }
@@ -75,6 +76,7 @@ div.usr-grp {
 /*
 * group add
 */
-.usr-grp span.url-noti { display:inline-block; text-align:left; font-size:12px; }
-.usr-grp span.url-noti:before { content:'* ' }
-.usr-grp span.url-noti span { color:#00E; font-weight:500; }
+.usr-grp span.input-noti { display:inline-block; text-align:left; font-size:12px; }
+.usr-grp span.input-noti:before { content:'* ' }
+.usr-grp span.input-noti span { color:#00E; font-weight:500; }
+.usr-grp span.input-noti.red { color:#E00; }

@@ -1,6 +1,8 @@
 package com.eunjy.stockid.controller.user;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -70,7 +72,7 @@ public class GrpController {
 		SessionUser sessionUser = (SessionUser) httpSession.getAttribute(Consts.SessionAttr.USER);
 
 		ResultVo resultVo = new ResultVo();
-		int result = grpService.insertGrp(usrGrpVO, sessionUser);
+		int result = grpService.addGrp(usrGrpVO, sessionUser);
 		
 		if (result == 2) {
 			resultVo = new ResultVo(ResultStatus.SUCCESS);
@@ -82,5 +84,56 @@ public class GrpController {
 		
 		return resultVo;
 	}
+	
+	// 그룹명, 그룹 URL 중복 여부 조회
+	@RequestMapping(value = "/ajax.grpInfoDuplChk.do", method = RequestMethod.POST) 
+	public @ResponseBody ResultVo grpInfoDuplChk(Model model, UsrGrpVO usrGrpVO, HttpSession httpSession) throws Exception { 
+		int result = grpService.getDuplGrpCnt(usrGrpVO);
+		
+		Map<String, String> resultMap = new HashMap<>();
+		resultMap.put("grpCnt", Integer.toString(result));
+		ResultVo resultVo = new ResultVo(ResultStatus.SUCCESS);
+		resultVo.setResultMap(resultMap);
+		
+		log.debug("grpInfoDuplChk result : {}", result); 
+		
+		return resultVo;
+	}
+	
+	// 그룹 참여 화면
+	@RequestMapping(value = "/joinGrp.do", method = {RequestMethod.POST, RequestMethod.GET}) 
+	public String joinGrp(Model model, UsrGrpVO usrGrpVO, HttpSession httpSession) { 
+		SessionUser sessionUser = (SessionUser) httpSession.getAttribute(Consts.SessionAttr.USER);
+		if (sessionUser != null) usrGrpVO.setUsrNum( sessionUser.getUsrNum() );
+		
+		List<UsrGrpVO> myGrpList = grpService.getMyGrpList(usrGrpVO);
+		int myGrpCnt = 0;
+		if (myGrpList.size() != 0) {
+			myGrpCnt = myGrpList.get(0).getTotalCnt();
+		}
+		
+		model.addAttribute("myGrpCnt", myGrpCnt);
+		
+		return "grp/joinGrp"; 
+	}
+	
+	// 그룹 참여 수행
+	@RequestMapping(value = "/ajax.joinGrpProcess.do", method = RequestMethod.POST) 
+	public @ResponseBody ResultVo joinGrpProcess(Model model, UsrGrpVO usrGrpVO, HttpSession httpSession) throws Exception { 
+		SessionUser sessionUser = (SessionUser) httpSession.getAttribute(Consts.SessionAttr.USER);
 
+		ResultVo resultVo = new ResultVo();
+		int result = grpService.joinGrp(usrGrpVO, sessionUser);
+		
+		if (result == 1) {
+			resultVo = new ResultVo(ResultStatus.SUCCESS);
+		} else {
+			resultVo = new ResultVo(ResultStatus.FAIL);
+		}
+		
+		log.debug("joinGrpProcess resultMsg : {}", result); 
+		
+		return resultVo;
+	}
+	
 }

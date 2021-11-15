@@ -100,4 +100,20 @@
 		)
 	</insert>
 	
+	<!-- 그룹명, 그룹 URL 중복 여부 조회 -->
+	<select id="getDuplGrpCnt" parameterType="UsrGrpVO" resultType="Integer"> 
+		/* GrpMapper.xml.getDuplGrpCnt */
+		SELECT
+			COUNT(1)
+		FROM GRP_INFO
+		<where>
+			<if test="grpNm != null and !grpNm.equals('') and chkType.equals('grpNm')">
+				AND GRP_NM = #{grpNm}
+			</if>
+			<if test="grpUrl != null and !grpUrl.equals('') and chkType.equals('grpUrl')">
+				AND GRP_URL = #{grpUrl}
+			</if>
+		</where>
+	</select>
+		
 </mapper>

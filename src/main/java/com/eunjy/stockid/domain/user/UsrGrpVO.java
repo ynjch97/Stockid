@@ -10,7 +10,9 @@ import lombok.NoArgsConstructor;
 @Alias("UsrGrpVO")
 public class UsrGrpVO {
 
+	// 조회 관련
 	private int totalCnt;
+	private String chkType;
 
 	// 공통
 	private String usrNum;

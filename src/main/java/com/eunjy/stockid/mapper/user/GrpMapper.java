@@ -14,4 +14,6 @@ public interface GrpMapper {
 	public int insertGrp(UsrGrpVO usrGrpVO);
 	public int insertGrpRltn(UsrGrpVO usrGrpVO);
 	
+	public int getDuplGrpCnt(UsrGrpVO usrGrpVO);
+	
 }

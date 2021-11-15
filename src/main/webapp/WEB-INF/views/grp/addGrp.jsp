@@ -5,15 +5,16 @@
 	<div>
 		<form id="addFrm">
 			<img class="logo" src="../../image/common/logo.png" />
-			<p>
+			<p :class="{ 'margin-2': grpNmDupl }">
 				<span class="input-span">그룹명</span>
-				<input type="text" id="grpNm" name="grpNm" v-model="grpNm" placeholder="그룹명" maxlength="20" />
+				<input type="text" id="grpNm" name="grpNm" v-model="grpNm" @input="grpInfoDuplChk('grpNm')" placeholder="그룹명" maxlength="20" />
 			</p>
-			<p class="margin-2">
+			<p v-if="grpNmDupl"><span class="input-noti red">이미 사용 중인 그룹명입니다.</span></p>
+			<p :class="{ 'margin-2': grpUrlDupl }">
 				<span class="input-span">그룹 URL</span>
-				<input type="text" id="grpUrl" name="grpUrl" v-model="grpUrl" @input="replaceUrl" placeholder="그룹 URL" maxlength="15" />
+				<input type="text" id="grpUrl" name="grpUrl" v-model="grpUrl" @input="[replaceUrl(), grpInfoDuplChk('grpUrl')]" placeholder="https://stockid/[그룹 URL]/main.do" maxlength="15" />
 			</p>
-			<p><span class="url-noti">https://stockid/<span>[그룹 URL]</span>/main.do 경로를 사용하게 됩니다.</span></p>
+			<p v-if="grpUrlDupl"><span class="input-noti red">이미 사용 중인 URL 입니다.</span></p>
 			<p>
 				<span class="radio-span">공개 여부</span>
 				<label for="openY" class="radio"><input type="radio" id="openY" name="openYn" v-model="openYn" value="Y" />공개</label>
@@ -30,7 +31,7 @@
 
 			<div class="save-wrap">
 				<button type="button" class="btn-join btn-half" @click="addGrp">저장</button>
-				<button type="button" class="btn-join btn-half">취소</button>
+				<button type="button" class="btn-join btn-half" @click="cancel">취소</button>
 			</div>
 		</form>
 	</div>
@@ -56,14 +57,22 @@
 				grpUrl: null,
 				openYn: "Y",
 				grpIntro: null,
-				grpExpln: null
+				grpExpln: null,
+				grpNmDupl: 0,
+				grpUrlDupl: 0
 			},
 			methods: {
 				addGrp: function() { // 그룹 생성
 					addGrp(this);
 				},
+				cancel: function() {
+					history.back();
+				},
 				replaceUrl: function() { // 그룹 URL 숫자와 영어만 입력 가능
 					this.grpUrl = returnStrWithout(this.grpUrl, "numEng");
+				},
+				grpInfoDuplChk: function(chkType) { // 그룹명, 그룹URL 중복 확인
+					grpInfoDuplChk(this, chkType);
 				}
 			}
 		});
@@ -124,4 +133,37 @@
 			}
 		});
 	}
+	
+	// 그룹명, 그룹URL 중복 확인 
+	function grpInfoDuplChk(obj, chkType) {
+		var result = 0;
+		var formData = new FormData($('#addFrm')[0]);
+		formData.set("chkType", chkType);
+		
+		$.ajax({
+			type: "POST",
+			enctype: 'multipart/form-data',
+			url : '/grp/ajax.grpInfoDuplChk.do',
+			data : formData,
+			processData: false, // 내부적으로 query string 만드는 것 방지
+			contentType: false,
+			cache: false,
+			timeout: 600000,
+			success : function(data) {
+				if (data.isSuccess) {
+					result = Number(data.resultMap.grpCnt);
+					
+					if (chkType == "grpNm") { // 사용 중 안내 문구 표시
+						obj.grpNmDupl = result;
+					} else {
+						obj.grpUrlDupl = result;
+					}
+				}
+			},
+			error : function(e) {
+				console.log(e.responseText.trim());
+			}
+		});
+	}
+	
 </script>
