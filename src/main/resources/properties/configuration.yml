@@ -2,8 +2,9 @@ settings:
   no_session: # 세션 체크 제외 페이지 
     - /login/login.do
     - /login/join.do
+    - /login/ajax.loginProcess.do
   no_session_pattern: # 세션 체크 제외 페이지 패턴
-    - "/(.*)/ajax.(.*)Process.do"
+    - "/(.*)/ajax.(.*)Chk.do" # 단순 체크
   fruits:
     - name: banana
       color: yellow
