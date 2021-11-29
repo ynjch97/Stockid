@@ -39,6 +39,27 @@ public class Consts {
 	}
 
 	/**
+	 * 그룹 생성 및 참여 결과값
+	 *
+	 * <PRE>
+	 * 1. ClassName: GrpResult
+	 * 2. FileName : Consts.java
+	 * 3. 작성자   : ynjch97
+	 * 4. 작성일   : 2021.11.30.
+	 * 5. 변경이력
+	 *		이름			일자				변경내용
+	 *     ———————————————————————————————————————————
+	 *		ynjch97		2021.11.30.		신규 개발
+	 * </PRE>
+	 */
+	public abstract static class GrpResult {
+		/** 그룹 생성 및 참여 결과값 정보 */
+		public static final String NOT_EXIST = "NOT_EXIST";
+		public static final String ALREADY_JOINED = "ALREADY_JOINED";
+		public static final String ALREADY_APRVED = "ALREADY_APRVED";
+	}
+
+	/**
 	 * 세션 정보
 	 *
 	 * <PRE>

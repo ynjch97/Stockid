@@ -123,12 +123,17 @@ public class GrpController {
 		SessionUser sessionUser = (SessionUser) httpSession.getAttribute(Consts.SessionAttr.USER);
 
 		ResultVo resultVo = new ResultVo();
-		int result = grpService.joinGrp(usrGrpVO, sessionUser);
+		int result = 0;
+		String resultMsg = grpService.chkGrpJoin(usrGrpVO, sessionUser);
+
+		if (resultMsg == null) {
+			result = grpService.joinGrp(usrGrpVO, sessionUser);
+		}
 		
 		if (result == 1) {
 			resultVo = new ResultVo(ResultStatus.SUCCESS);
 		} else {
-			resultVo = new ResultVo(ResultStatus.FAIL);
+			resultVo = new ResultVo(ResultStatus.FAIL, resultMsg);
 		}
 		
 		log.debug("joinGrpProcess resultMsg : {}", result); 

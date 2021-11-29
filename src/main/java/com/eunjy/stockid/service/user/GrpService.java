@@ -29,6 +29,44 @@ public class GrpService {
 	}
 
 	/**
+	 * 그룹 정보 조회
+	 * @param UsrGrpVO
+	 * @return UsrGrpVO
+	 */
+	public UsrGrpVO getGrpInfo(UsrGrpVO usrGrpVO, SessionUser sessionUser) {
+		if (sessionUser != null) {
+			usrGrpVO.setUsrNum( sessionUser.getUsrNum() );
+			usrGrpVO.setUsrId( sessionUser.getUsrId() );
+		}
+		
+		return grpMapper.getGrpInfo(usrGrpVO); 
+	}
+
+	/**
+	 * 그룹 가입 가능 여부 조회
+	 * @param UsrGrpVO
+	 * @return String
+	 */
+	public String chkGrpJoin(UsrGrpVO usrGrpVO, SessionUser sessionUser) {
+		String resultMsg = null;
+		
+		// 그룹 정보 조회
+		UsrGrpVO grpInfo = getGrpInfo(usrGrpVO, sessionUser); 
+		
+		if ( grpInfo == null ) {
+			resultMsg = Consts.GrpResult.NOT_EXIST;
+		} else {
+			if ( "Y".equals(grpInfo.getHeadAprvYn()) ) { // 이미 승인됨
+				resultMsg = Consts.GrpResult.ALREADY_APRVED;
+			} else if ( "Y".equals(grpInfo.getMbrAprvYn()) ) { // 이미 가입 신청함
+				resultMsg = Consts.GrpResult.ALREADY_JOINED;
+			}
+		}
+		
+		return resultMsg; 
+	}
+
+	/**
 	 * 그룹 생성
 	 * @param UsrGrpVO
 	 * @return int
@@ -47,9 +85,11 @@ public class GrpService {
 		
 		result = grpMapper.insertGrp(usrGrpVO);
 		
+		// 그룹에 회원 추가
 		usrGrpVO.setUsrType(Consts.UsrType.MASTER);
 		usrGrpVO.setGrpNum( Integer.toString(usrGrpVO.getIntGrpNum()) );
-		
+		usrGrpVO.setHeadAprvYn("Y");
+		usrGrpVO.setMbrAprvYn("Y");
 		result += grpMapper.insertGrpRltn(usrGrpVO);
 		
 		return result;
@@ -74,17 +114,21 @@ public class GrpService {
 	@Transactional(isolation=Isolation.READ_COMMITTED, rollbackFor=Exception.class) // 격리 레벨 : 커밋된 데이터에 대해 읽기 허용 & 예외 발생 시 강제로 Rollback
 	public int joinGrp(UsrGrpVO usrGrpVO, SessionUser sessionUser) throws Exception {
 		int result = 0;
-
-		// TODO : 이미 참여한 그룹인지 확인 후 리턴
 		
 		if (sessionUser != null) {
 			usrGrpVO.setUsrNum( sessionUser.getUsrNum() );
 			usrGrpVO.setUsrId( sessionUser.getUsrId() );
 		}
 		
+		// 그룹 정보 조회
+		UsrGrpVO grpInfo = getGrpInfo(usrGrpVO, sessionUser); 
+
+		// 그룹에 회원 추가
 		usrGrpVO.setUsrType(Consts.UsrType.GENERAL);
-		
-		result += grpMapper.insertGrpRltn(usrGrpVO);
+		usrGrpVO.setGrpNum( grpInfo.getGrpNum() );
+		usrGrpVO.setHeadAprvYn("N");
+		usrGrpVO.setMbrAprvYn("Y");
+		result += grpMapper.insertGrpRltn(usrGrpVO); 
 		
 		return result;
 	}	

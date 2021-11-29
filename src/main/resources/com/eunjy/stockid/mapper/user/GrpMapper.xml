@@ -30,6 +30,33 @@
 		    AND U.USR_NUM = #{usrNum}
 		ORDER BY R.REG_DT
 	</select>
+	
+	<!-- 그룹 정보 조회 -->
+	<select id="getGrpInfo" parameterType="UsrGrpVO" resultType="UsrGrpVO"> 
+		/* GrpMapper.xml.getGrpInfo */
+		SELECT
+			G.GRP_NUM
+			, G.GRP_NM
+			, G.GRP_URL
+			, G.OPEN_YN
+		    , R.USR_NUM
+			, COUNT(R.USR_NUM) AS MBR_CNT /*회원 수*/
+			, CASE WHEN (SELECT COUNT(1) FROM USR_GRP_RLTN WHERE GRP_NUM = G.GRP_NUM AND R.MBR_APRV_YN = 'Y' AND USR_NUM = '9') > 0 THEN 'Y' 
+				ELSE 'N' END AS MBR_APRV_YN /*기 가입여부*/
+			, CASE WHEN (SELECT COUNT(1) FROM USR_GRP_RLTN WHERE GRP_NUM = G.GRP_NUM AND R.MBR_APRV_YN = 'Y' AND R.HEAD_APRV_YN = 'Y' AND USR_NUM = '9') > 0 THEN 'Y' 
+				ELSE 'N' END AS HEAD_APRV_YN /*승인여부*/
+		FROM GRP_INFO G
+		LEFT OUTER JOIN USR_GRP_RLTN R
+			ON G.GRP_NUM = R.GRP_NUM
+		LEFT OUTER JOIN USR_INFO U
+			ON U.USR_NUM = R.USR_NUM
+		WHERE G.USE_YN = 'Y'
+			<if test="grpPtcpCd != null and !grpPtcpCd.equals('')">
+			    AND G.GRP_PTCP_CD = #{grpPtcpCd}
+			</if>
+		GROUP BY G.GRP_NUM
+		LIMIT 0, 1
+	</select>
  	
 	<!-- 그룹 생성 -->
 	<insert id="insertGrp" parameterType="UsrGrpVO"> 
@@ -88,9 +115,9 @@
 			#{usrNum}
 		    , #{grpNum}
 		    , #{usrType}
-		    , NULL
-		    , 'Y'
-		    , 'Y'
+		    , #{usrNick}
+		    , #{headAprvYn}
+		    , #{mbrAprvYn}
 		    , 'N'
 		    , NULL
 		    , #{usrId}

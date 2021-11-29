@@ -43,6 +43,7 @@ public class UsrGrpVO {
 	private String useYn;
 	private String openYn;
 	private String headAprvYn;
+	private String mbrAprvYn;
 	private String mbrDelYn;
 	private String mbrDelDt;
 	
