@@ -48,6 +48,9 @@ div.usr-grp {
 .usr-grp .save-wrap .btn-half { display:inline-block; width:195px; }
 .usr-grp .save-wrap .btn-half:first-child { margin-right:5px; float:left; }
 .usr-grp .save-wrap .btn-half:last-child { float:right; }
+.usr-grp .find-noti * {flex-direction: column; justify-content: center; align-items: center;}
+.usr-grp .find-noti .title {color:#E00; font-size: 20px; font-weight: bold;}
+.usr-grp .find-noti .sub {font-size: 12px;}
 
 /*
 * group select
