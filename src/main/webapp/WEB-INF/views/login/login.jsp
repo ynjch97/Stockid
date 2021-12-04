@@ -27,9 +27,8 @@
 	}).on("click","#joinBtn",function(){ // 회원가입
 		movePage("/login/join.do");
 	}).on("click","#findIdPw",function(){ // ID, PW 찾기
-		window.location = "www.naver.com";
-	})
-	;
+		movePage("/login/findUsrId.do");
+	});
 	
 	// Vue.js 세팅
 	function vueInit() {

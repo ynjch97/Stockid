@@ -74,4 +74,20 @@ public class LoginController {
 		}
 	}
 	
+	@RequestMapping(value = "/login/findUsrId.do", method = {RequestMethod.POST, RequestMethod.GET}) 
+	public String findUsrId(Model model) { 
+		return "login/findUsrId"; 
+	}
+	
+	@RequestMapping(value = "/login/ajax.findUsrIdProcess.do", method = RequestMethod.POST) 
+	public @ResponseBody ResultVo getFindUsrList(Model model, UsrGrpVO usrGrpVO) { 
+		int result = 0;
+				
+		if (result == 1) {
+			return new ResultVo(ResultStatus.SUCCESS, "이메일 전송");
+		} else {
+			return new ResultVo(ResultStatus.FAIL, "이메일 전송 실패");
+		}
+	}
+	
 }
