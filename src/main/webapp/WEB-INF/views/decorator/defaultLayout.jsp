@@ -5,6 +5,8 @@
 	<head> 
 		<meta charset="utf-8" />
 		<title>Welcome to STOCKID</title>
+		<link rel="shortcut icon" href="../image/common/favicon.ico" type="image/x-icon" />
+		
 		<link rel="stylesheet" href="/css/main.css" />
 		<link rel="stylesheet" href="/css/header.css" />
 		<link rel="stylesheet" href="/css/footer.css" />
