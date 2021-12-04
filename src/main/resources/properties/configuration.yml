@@ -3,6 +3,7 @@ settings:
     - /login/login.do
     - /login/join.do
     - /login/ajax.loginProcess.do
+    - /login/ajax.joinProcess.do
   no_session_pattern: # 세션 체크 제외 페이지 패턴
     - "/(.*)/ajax.(.*)Chk.do" # 단순 체크
   fruits:
