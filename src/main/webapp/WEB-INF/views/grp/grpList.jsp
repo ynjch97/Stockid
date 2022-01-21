@@ -7,11 +7,14 @@
 	<div>
 		<div class="tit-wrap">
 			<span v-if="grpExist">그룹 목록</span>
-			<span id="userInfoBtn">개인정보 수정</span>
+			<span @click="goUserInfo">개인정보 수정</span>
 		</div>
 		<div class="grp-wrap" v-if="grpExist">
-			<ul v-for="grpInfo in grpList">
-				<li data-grp-num="1" data-grp-url="I_CAN"><span class="grpMain">{{grpInfo.grpNm}}</span><span class="grpSetting">></span></li>
+			<ul v-for="(grpInfo, idx) in grpList" :key="grpInfo.grpNum">
+				<li>
+					<span class="grpMain" @click="goMain" :idx="idx">{{grpInfo.grpNm}}</span>
+					<span class="grpSetting" @click="goSetting" :idx="idx">></span>
+				</li>
 			</ul>
 		</div>
 		<div class="no-grp-wrap" v-else>
@@ -20,8 +23,8 @@
 			<p>초대 코드를 입력해 가입해보세요.</p>
 		</div>
 		<div class="btn-wrap">
-			<button class="btn-join-grp joinGrp" :class="{ 'disabled': grpFull }">그룹 참여하기</button>
-			<button class="btn-crt-grp addGrp" :class="{ 'disabled': grpFull }">그룹 생성하기</button>
+			<button class="btn-join-grp" :class="{ 'disabled': grpFull }" @click="goJoinGrp">그룹 참여하기</button>
+			<button class="btn-crt-grp" :class="{ 'disabled': grpFull }" @click="goAddGrp">그룹 생성하기</button>
 		</div>
 		<span class="grp-noti" :class="{ 'red': grpFull }">* 그룹은 총 5개까지만 참여 가능합니다.</span>
 	</div>
@@ -33,20 +36,8 @@
 	const grpList = ${myGrpList};
 	const grpCnt = grpList.length;
 
-	$(document).ready(function(){
+	$(function() {
 		vueInit();
-	}).on("click","#userInfoBtn",function(){ // 개인정보 수정으로 이동
-		goUserInfo();
-	}).on("click",".grpMain",function(){ // 그룹 메인으로 이동
-		var grpUrl = $(this).parent("li").data("grpUrl");
-		goMain(grpUrl);
-	}).on("click",".grpSetting",function(){ // 그룹 설정으로 이동
-		var grpNum = $(this).parent("li").data("grpNum");
-		goSetting(grpNum);
-	}).on("click",".joinGrp",function(){ // 그룹 참여로 이동
-		goJoinGrp();
-	}).on("click",".addGrp",function(){ // 그룹 생성으로 이동
-		goAddGrp();
 	})
 	;
 	
@@ -59,46 +50,40 @@
 				grpFull: (grpCnt >= 5), 
 				// 그룹 리스트 존재
 				grpExist: (grpCnt > 0), 
-				grpList: grpList
+				grpList: grpList,
+				grpIdx: null
 			},
 			methods: {
+				goUserInfo: function(e) { // 개인정보 수정으로 이동
+					movePage("/user/userInfo.do");
+				},
+				goMain: function(e) { // 해당 그룹 메인으로 이동
+					this.grpIdx = e.target.getAttribute('idx');
+					var grpUrl = this.grpList[this.grpIdx].grpUrl;
+					movePage("/" + grpUrl + "/main.do");
+				},
+				goSetting: function(e) { // 해당 그룹 설정으로 이동
+					this.grpIdx = e.target.getAttribute('idx');
+					var grpNum = this.grpList[this.grpIdx].grpNum;
+					goSetting(grpNum); 
+				},
+				goJoinGrp: function(e) { // 그룹 참여로 이동
+					goJoinGrp();
+				},
+				goAddGrp: function(e) { // 그룹 생성으로 이동
+					goAddGrp();
+				}
 			}
 		});
 		
 	}
 	
-	// 1. 데이터 세팅
-	/* 
-	function init() {
-		var grpCnt = grpList.length;
-		
-		// 그룹 리스트 세팅
-		if (grpCnt > 0) {
-			$.each(grpList, function(idx, grp) {
-				var $grpLi = $(".grp-wrap ul li").eq(0).hide().clone(); // 첫 번째 항목 숨기기
-				$grpLi.show().attr("data-grp-num", grp.grpNum).attr("data-grp-url", grp.grpUrl).find("span:first-child").text(grp.grpNm); // data, 이름 세팅
-				$(".grp-wrap ul").append($grpLi);
-		    });
-		} 
-	} 
-	*/
-	
-	// 2. 개인정보 수정으로 이동
-	function goUserInfo() {
-		movePage("/user/userInfo.do");
-	}
-	
-	// 3. 해당 그룹 메인으로 이동
-	function goMain(grpUrl) {
-		movePage("/" + grpUrl + "/main.do");
-	}
-	
-	// 4. 해당 그룹 설정으로 이동
+	// 2. 해당 그룹 설정으로 이동
 	function goSetting(grpNum) {
 		alert("설정 : " + grpNum);
 	}
 	
-	// 5. 그룹 참여로 이동 
+	// 3. 그룹 참여로 이동 
 	function goJoinGrp() {
 		if (grpCnt >= 5) {
 			alert("그룹은 총 5개까지만 참여 가능합니다.");
@@ -107,7 +92,7 @@
 		}
 	}
 	
-	// 6. 그룹 생성으로 이동 
+	// 4. 그룹 생성으로 이동 
 	function goAddGrp() {
 		if (grpCnt >= 5) {
 			alert("그룹은 총 5개까지만 참여 가능합니다.");

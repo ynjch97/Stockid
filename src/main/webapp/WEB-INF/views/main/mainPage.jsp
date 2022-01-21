@@ -2,7 +2,9 @@
 <!DOCTYPE html>
 
 <div class="container">
-	전체 최신글
+	<h3 class="page-sub-title-style">
+		<h3 class="sub-title-text">최신글</h3>
+	</h3>
 	<div class="list-board">
 		<table>
 			<colgroup>
@@ -37,6 +39,5 @@
 
 <script type="text/javascript">
 	$(document).ready(function(){
-		console.log("hi");
 	});
 </script>   
