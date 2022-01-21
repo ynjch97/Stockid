@@ -54,7 +54,7 @@
 				grpIdx: null
 			},
 			methods: {
-				goUserInfo: function(e) { // 개인정보 수정으로 이동
+				goUserInfo: function() { // 개인정보 수정으로 이동
 					movePage("/user/userInfo.do");
 				},
 				goMain: function(e) { // 해당 그룹 메인으로 이동
@@ -67,10 +67,10 @@
 					var grpNum = this.grpList[this.grpIdx].grpNum;
 					goSetting(grpNum); 
 				},
-				goJoinGrp: function(e) { // 그룹 참여로 이동
+				goJoinGrp: function() { // 그룹 참여로 이동
 					goJoinGrp();
 				},
-				goAddGrp: function(e) { // 그룹 생성으로 이동
+				goAddGrp: function() { // 그룹 생성으로 이동
 					goAddGrp();
 				}
 			}
