@@ -38,3 +38,7 @@ Stock + Kid, 주린이들을 위한 주식 정보 공유 사이트
 - 화면 추가 : 그룹 생성
 - 화면 수정 : 그룹 선택 화면에 Vue.js 적용
 - LoginInterceptor 수정 (redirectPage 관련 부분 오류 수정)
+
+### 22년 1월
+- 화면 수정 : 그룹 선택 화면에 Vue.js 적용
+- JPA Hibernate 적용
