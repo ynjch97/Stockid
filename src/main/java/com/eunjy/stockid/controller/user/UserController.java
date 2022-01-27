@@ -12,7 +12,6 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.eunjy.stockid.domain.common.ResultVo;
 import com.eunjy.stockid.domain.common.ResultVo.ResultStatus;
 import com.eunjy.stockid.domain.common.SessionUser;
-import com.eunjy.stockid.domain.user.UsrEntity;
 import com.eunjy.stockid.domain.user.UsrGrpVO;
 import com.eunjy.stockid.service.login.LoginService;
 import com.eunjy.stockid.service.user.UserService;
@@ -49,23 +48,6 @@ public class UserController {
 		return "user/userInfo"; 
 	}
 
-	@RequestMapping(value = "/userInfo2.do", method = {RequestMethod.POST, RequestMethod.GET}) 
-	public String userInfo2(Model model, UsrGrpVO usrGrpVO, HttpSession httpSession) { 
-		SessionUser sessionUser = (SessionUser) httpSession.getAttribute(Consts.SessionAttr.USER);
-		String usrId = "";
-		if (sessionUser != null) usrId = sessionUser.getUsrId();
-		
-		ObjectMapper obj = new ObjectMapper(); 
-		UsrEntity userInfo = userService.findByUsrId(usrId);
-		try {
-			model.addAttribute("userInfo", obj.writeValueAsString(userInfo));
-		} catch (JsonProcessingException e) {
-			e.printStackTrace();
-		}
-		
-		return "user/userInfo"; 
-	}
-	
 	@RequestMapping(value = "/changeUserInfo.do", method = RequestMethod.POST) 
 	public @ResponseBody ResultVo changeUserInfo(Model model, UsrGrpVO usrGrpVO) { 
 		int result = 0;

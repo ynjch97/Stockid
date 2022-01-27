@@ -1,4 +1,4 @@
-package com.eunjy.stockid.domain.user;
+package com.eunjy.stockid.jpaDomain.user;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -16,7 +16,7 @@ import lombok.Setter;
 @Table(name="USR_INFO")
 @Getter
 @Setter
-public class UsrEntity {
+public class UsrJpaVO {
 
 	@Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
