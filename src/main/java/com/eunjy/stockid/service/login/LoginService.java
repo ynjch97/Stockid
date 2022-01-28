@@ -26,7 +26,6 @@ public class LoginService {
 	@Autowired
 	private LoginMapper loginMapper;
 	
-	
 	/**
 	 * 로그인 검증 및 세션 정보 생성 1
 	 * @param UsrGrpVO

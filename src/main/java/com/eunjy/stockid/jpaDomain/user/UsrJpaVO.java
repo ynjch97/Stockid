@@ -21,7 +21,7 @@ public class UsrJpaVO {
 	@Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "USR_NUM")
-    private Long usrNum;
+    private int usrNum;
 
     @Column(name = "USR_ID", length = 30, nullable = false)
     private String usrId;

@@ -23,6 +23,8 @@
 	$(document).ready(function () {
 		
 		vueInit(); 
+		loginFrmVm.loginId = "ynjch";
+		loginFrmVm.loginPw = "1234";
 		
 	}).on("click","#joinBtn",function(){ // 회원가입
 		movePage("/login/join.do");

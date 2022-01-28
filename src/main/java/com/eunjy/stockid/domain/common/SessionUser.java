@@ -9,7 +9,7 @@ import lombok.Data;
 public class SessionUser {
 
 	// Session 사용자 정보
-	private String usrNum;
+	private int usrNum;
 	private String usrId;
 	private String usrPw;
 	private String usrNm;

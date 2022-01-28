@@ -15,7 +15,7 @@ public class UsrGrpVO {
 	private String chkType;
 
 	// 공통
-	private String usrNum;
+	private int usrNum;
 	private String grpNum;
 	private String rltnNum;
 	private int intGrpNum;

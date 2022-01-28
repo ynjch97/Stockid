@@ -55,7 +55,7 @@
 			},
 			methods: {
 				goUserInfo: function() { // 개인정보 수정으로 이동
-					movePage("/user/userInfo.do");
+					movePage("/user/userInfo2.do");
 				},
 				goMain: function(e) { // 해당 그룹 메인으로 이동
 					this.grpIdx = e.target.getAttribute('idx');

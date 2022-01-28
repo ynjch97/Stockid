@@ -16,7 +16,8 @@ public class UsrJpaSpec {
 	public enum SearchKey {
 		USR_NUM("usrNum"),
 		USR_ID("usrId"),
-		USR_NM("usrNm");
+		USR_NM("usrNm"),
+		USE_YN("useYn");
 
 		private final String value;
 		
@@ -42,11 +43,11 @@ public class UsrJpaSpec {
 		List<Predicate> predicate = new ArrayList<>();
 		for (SearchKey key : searchKeyword.keySet()) {
 			switch (key) {
-				case USR_NUM:
+				case USR_NUM:	// int 자료형
 					predicate.add(builder.equal(
-						root.get(key.value), Integer.valueOf(searchKeyword.get(key).toString())
+						root.get(key.value), Integer.parseInt(searchKeyword.get(key).toString())
 					));
-				case USR_ID:
+				default:		// string
 					predicate.add(builder.equal(
 						root.get(key.value), searchKeyword.get(key)
 					));
