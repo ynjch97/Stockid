@@ -17,6 +17,7 @@ public class SiteMeshConfig extends ConfigurableSiteMeshFilter {
 		// Exclude path from decoration. 
 		.addExcludedPath("/html/*") 
 		.addExcludedPath(".json") 
+		.addExcludedPath("/swagger-ui/*") 
 		.setMimeTypes("text/html");
 	}
 	
