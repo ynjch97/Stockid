@@ -1,6 +1,16 @@
 # Stockid
 Stock + Kid, 주린이들을 위한 주식 정보 공유 사이트
 
+### 개발 환경
+Spring Boot, Gradle, Java 11  
+MySQL, JPA
+
+### 프론트엔드
+Javascript, JQuery, Vue.js
+
+### 테스트
+JUnit5, Swagger
+
 [로그인 구현 정보](https://github.com/ynjch97/Stockid/wiki/Login-%EA%B8%B0%EB%8A%A5-%EA%B5%AC%ED%98%84-%EC%A0%95%EB%B3%B4)
 
 ### 21년 5월 
@@ -42,3 +52,5 @@ Stock + Kid, 주린이들을 위한 주식 정보 공유 사이트
 ### 22년 1월
 - 화면 수정 : 그룹 선택 화면에 Vue.js 적용
 - JPA Hibernate 적용
+
+
