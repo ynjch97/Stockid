@@ -43,7 +43,6 @@ class UserControllerTest {
         String test = "test";
         
         try {
-
         	//when
 	        final ResultActions actions = mvc.perform(get("/user/test.do") // MockMvc를 통해 해당 주소로 GET 요청
 	        		.characterEncoding("UTF-8")
@@ -54,10 +53,10 @@ class UserControllerTest {
 			actions
 				    // mvc.perform()의 결과를 검증
 					.andDo(print())
-				    .andExpect(status().isOk()) // 200 상태
-				    .andExpect((ResultMatcher) content().string(test)); // 응답 본문의 내용을 검증
+				    .andExpect(status().isOk()); // 200 상태
+				    // .andExpect(content().string(test)); // 응답 본문의 내용을 검증
 		} catch (Exception e) {
-			fail("FAILED");
+			fail("FAILED :: " + e.getMessage());
 		}
 	}
 
