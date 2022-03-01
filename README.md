@@ -59,4 +59,4 @@ JUnit5, Swagger
 - JIRA 연결
 
 ### 22년 3월
-- 포스트 목록 화면 JPA로 
+- 포스트 목록 화면 JPA로 변경
