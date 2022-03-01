@@ -4,11 +4,11 @@ import java.util.List;
 
 import org.apache.ibatis.annotations.Mapper;
 
-import com.eunjy.stockid.domain.post.PostMainVO;
+import com.eunjy.stockid.domain.post.PostVO;
 
 @Mapper
 public interface PostMapper {
 	
-	public List<PostMainVO> getPostList(PostMainVO PostMainVO);
+	public List<PostVO> getPostList(PostVO postVO);
 
 }

@@ -10,12 +10,14 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @Entity
 @Table(name="USR_INFO")
 @Getter
 @Setter
+@NoArgsConstructor
 public class UsrJpaVO {
 
 	@Id

@@ -2,7 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd"> 
 <mapper namespace="com.eunjy.stockid.mapper.post.PostMapper"> 
 	
-	<select id="getPostList" parameterType="com.eunjy.stockid.domain.post.PostMainVO" resultType="com.eunjy.stockid.domain.post.PostMainVO"> 
+	<select id="getPostList" parameterType="com.eunjy.stockid.domain.post.PostVO" resultType="com.eunjy.stockid.domain.post.PostVO"> 
 		SELECT 
 			P.POST_NUM
 		    , P.GRP_NUM
@@ -19,7 +19,7 @@
 			ON P.CTGRY_NUM = C.CTGRY_NUM
 		JOIN GRP_INFO G
 			ON P.GRP_NUM = G.GRP_NUM
-		WHERE G.GRP_URL = #{grpUrl}
+		WHERE G.GRP_NUM = #{grpNum}
 			AND P.CTGRY_NUM = #{ctgryNum}
 		    AND P.USE_YN = 'Y'
 		    AND P.DEL_YN = 'N'
