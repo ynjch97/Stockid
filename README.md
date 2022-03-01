@@ -53,4 +53,10 @@ JUnit5, Swagger
 - 화면 수정 : 그룹 선택 화면에 Vue.js 적용
 - JPA Hibernate 적용
 
+### 22년 2월
+- Swagger 추가
+- JUnit5 추가
+- JIRA 연결
 
+### 22년 3월
+- 포스트 목록 화면 JPA로 
